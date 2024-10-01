@@ -13,6 +13,11 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    role = db.Column(db.String(50), nullable=False)
+
+    backpack = db.relationship('BackpackItem', back_populates='user')
+    # since we dont need the user in backpackitem how do we write this?
+    # because we do want the users backpack
 
     @property
     def password(self):
