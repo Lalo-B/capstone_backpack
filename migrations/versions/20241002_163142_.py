@@ -64,9 +64,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['test_id'], ['practice_tests.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    with op.batch_alter_table('users', schema=None) as batch_op:
-        batch_op.add_column(sa.Column('role', sa.String(length=50), nullable=False))
-
     # ### end Alembic commands ###
 
 

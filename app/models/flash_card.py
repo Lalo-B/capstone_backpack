@@ -25,6 +25,7 @@ class FlashCard(db.Model):
     def to_dict(self):
         return {
             **self.to_dict_basic(),
-            'imageUrl': self.image.url,
-            'owner': self.owner.to_dict_basic()
+            'set': self.set.to_dict_basic()
+            # 'imageUrl': self.image.url,
+            # 'owner': self.owner.to_dict_basic()
         }

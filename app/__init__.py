@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, request, session, redirect
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
@@ -8,6 +8,9 @@ from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.aws_routes import image_routes
+from .api.backpack_routes import backpack_routes
+from .api.flashcard_set_routes import flashcard_routes
+from .api.p_test_routes import practice_test_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -30,6 +33,9 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(image_routes, url_prefix='/api/images')
+app.register_blueprint(backpack_routes, url_prefix='/api/backpacks')
+app.register_blueprint(practice_test_routes, url_prefix='/api/practice-tests')
+app.register_blueprint(flashcard_routes, url_prefix='/api/flashcards')
 db.init_app(app)
 Migrate(app, db)
 

@@ -3,7 +3,7 @@ from app.models import db, Post
 from flask_login import login_required #current_user was imported before
 from app.api.aws_helpers import (upload_file_to_s3, get_unique_filename, remove_file_from_s3)
 from ..forms.image_form import ImageForm
- 
+
 image_routes = Blueprint("images", __name__)
 
 
