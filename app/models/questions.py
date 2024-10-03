@@ -16,14 +16,16 @@ class Question(db.Model):
     test_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('practice_tests.id')), nullable=False)
     correct_answer = db.Column(db.String(50), nullable=False)
 
+    test = db.relationship('PracticeTest', back_populates='questions')
+
     def to_dict_basic(self):
         return {
             'id': self.id,
             'question': self.question,
-            'answer1': self.answer_1,
-            'answer2': self.answer_2,
-            'answer3': self.answer_3,
-            'answer4': self.answer_4,
+            'answer1': self.answer1,
+            'answer2': self.answer2,
+            'answer3': self.answer3,
+            'answer4': self.answer4,
             'testId': self.test_id,
             'correctAnswer': self.correct_answer
         }

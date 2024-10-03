@@ -31,5 +31,5 @@ class FlashCardSet(db.Model):
     def to_dict(self):
         return {
             **self.to_dict_basic(),
-            'flashCards': self.flash_cards.to_dict_basic()
+            'flashCards': [card.to_dict_basic() for card in self.flash_cards]
         }

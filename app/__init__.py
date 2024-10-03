@@ -13,6 +13,7 @@ from .api.flashcard_set_routes import flashcard_routes
 from .api.p_test_routes import practice_test_routes
 from .seeds import seed_commands
 from .config import Config
+from .models import PracticeTest, FlashCardSet
 
 app = Flask(__name__, static_folder='../react-vite/dist', static_url_path='/')
 

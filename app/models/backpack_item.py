@@ -9,9 +9,7 @@ class BackpackItem(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     study_mat_id = db.Column(db.Integer, nullable=False, unique=False)
-    user_id = db.Column(
-        db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False
-    )
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     mat_type = db.Column(db.String(25), nullable=False)
 
     owner = db.relationship("User", back_populates="backpack")

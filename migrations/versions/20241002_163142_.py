@@ -49,8 +49,6 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
     sa.Column('category', sa.Integer(), nullable=False),
-    sa.Column('backpack_id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['backpack_id'], ['backpack_items.id'], ),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

@@ -10,10 +10,8 @@ class PracticeTest(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     category = db.Column(db.Integer, nullable=False)
-    backpack_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("backpack_items.id")))
 
-    # questions = db.relationship('Question', back_populates='test') #doesnt need backpop?
-    # backpack = db.relationship('BackpackItem', back_populates='practice_tests')
+    questions = db.relationship('Question', back_populates='test', cascade='all, delete-orphan')
     backpack = db.relationship(
       'BackpackItem',
       primaryjoin="and_(BackpackItem.mat_type=='test', foreign(BackpackItem.study_mat_id)==PracticeTest.id)",
@@ -21,20 +19,16 @@ class PracticeTest(db.Model):
       overlaps="backpack,flashcards,tests"
   )
 
-    # __mapper_args__ = {
-    #     'polymorphic_identity': 'test'
-    # }
 
     def to_dict_basic(self):
         return {
             "id": self.id,
             "ownerId": self.owner_id,
             "category": self.category,
-            'backpackId': self.backpack_id
         }
 
     def to_dict(self):
         return {
             **self.to_dict_basic(),
-            'backpack': self.backpack.to_dict_basic()
+            'questions': [q.to_dict_basic() for q in self.questions]
         }
