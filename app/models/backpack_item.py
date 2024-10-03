@@ -8,7 +8,7 @@ class BackpackItem(db.Model):
         __table_args__ = {"schema": SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    study_mat_id = db.Column(db.Integer, nullable=False)
+    study_mat_id = db.Column(db.Integer, nullable=False, unique=False)
     user_id = db.Column(
         db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False
     )
@@ -30,10 +30,10 @@ class BackpackItem(db.Model):
     )
 
     def parent(self):
-        if self.imageable_type == "test":
-            return self.post.to_dict()
-        elif self.imageable_type == "flashcards":
-            return self.comment.to_dict()
+        if self.mat_type == "test":
+            return self.tests.to_dict_basic()
+        elif self.mat_type == "flashcards":
+            return self.falshcards.to_dict_basic()
         else:
             return "Invalid material_type"
 

@@ -4,6 +4,7 @@ from .flash_cards import seed_flash_cards, undo_flash_cards
 from .questions import seed_questions, undo_questions
 from .practice_tests import seed_practice_tests, undo_tests
 from .flash_card_sets import seed_flash_card_sets, undo_flash_card_sets
+from .backpack_items import seed_backpack_items, undo_backpack_items
 
 from app.models.db import db, environment, SCHEMA
 
@@ -24,8 +25,10 @@ def seed():
         undo_questions()
         undo_flash_card_sets()
         undo_tests()
+        undo_backpack_items()
         undo_users()
     seed_users()
+    seed_backpack_items()
     seed_practice_tests()
     seed_flash_card_sets()
     seed_questions()
@@ -40,5 +43,6 @@ def undo():
     undo_questions()
     undo_flash_card_sets()
     undo_tests()
+    undo_backpack_items()
     undo_users()
     # Add other undo functions here

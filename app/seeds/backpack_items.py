@@ -14,7 +14,7 @@ def seed_backpack_items():
         tests=test1
     )
     backpack_item_2 = BackpackItem(
-        id=1,
+        id=2,
         user_id=1,
         study_mat_id=1,
         mat_type='flashcards',
@@ -27,8 +27,8 @@ def seed_backpack_items():
 
 def undo_backpack_items():
     if environment == "production":
-        db.session.execute(f"TRUNCATE table {SCHEMA}.carts RESTART IDENTITY CASCADE;")
+        db.session.execute(f"TRUNCATE table {SCHEMA}.backpack_items RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM carts"))
+        db.session.execute(text("DELETE FROM backpack_items"))
 
     db.session.commit()

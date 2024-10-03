@@ -8,6 +8,8 @@ Create Date: 2024-10-02 16:31:42.813625
 from alembic import op
 import sqlalchemy as sa
 
+from sqlalchemy.orm import sessionmaker
+Session = sessionmaker()
 
 # revision identifiers, used by Alembic.
 revision = '6a0d26940c2d'
@@ -77,4 +79,8 @@ def downgrade():
     op.drop_table('flash_cards')
     op.drop_table('flash_card_sets')
     op.drop_table('backpack_items')
+    bind = op.get_bind()
+    session = Session(bind==bind)
+    session.execute('DROP TYPE mat_type')
+
     # ### end Alembic commands ###

@@ -9,8 +9,8 @@ def get_curr_backpack():
     '''
     gets current users backpack
     '''
-    backpack = BackpackItem.query.filter(BackpackItem.user_id==current_user.id).first()
-    print('this is backpack', backpack)
+    backpack = BackpackItem.query.filter(BackpackItem.user_id==current_user.id).all()
+    print('this is backpack', [el.to_dict_basic() for el in backpack])
     if not backpack:
         return {'errors': 'cannot find current users backpack'},404
-    return backpack.to_dict()
+    return [el.to_dict_basic() for el in backpack]
