@@ -9,9 +9,9 @@ class FlashCard(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.String(500), nullable=False)
     answer = db.Column(db.String(500), nullable=False)
-    set_id = db.Column(db.Integer, nullable=False)
+    set_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('flash_card_sets.id')), nullable=False)
 
-    image = db.relationship('Images', back_populates='images')
+    # image = db.relationship('Posts', back_populates='images')
     set = db.relationship('FlashCardSet', back_populates='flash_cards')
 
     def to_dict_basic(self):

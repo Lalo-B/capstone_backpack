@@ -1,6 +1,6 @@
 from .db import db, SCHEMA, environment, add_prefix_for_prod
 
-class BackpackItem(db.Model):
+class BackpackItem(db.Model): #aka study mats
     __tablename__ = 'backpack_items'
 
     if environment == "production":
@@ -11,11 +11,27 @@ class BackpackItem(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     mat_type = db.Column(db.String(50), nullable=False)
 
-    # db.relationship for the backpack items?
-    flash_card_sets = db.relationship('FlashCardSet', back_populates='backpack')
-    practice_tests = db.relationship('PracticeTest', back_populates='backpack')
+    # db.relationship for the backpack items
     owner = db.relationship('User', back_populates='backpack')
-    # do we need the owner? im pretty sure no
+    # flash_card_sets = db.relationship('FlashCardSet', back_populates='backpack')
+    # practice_tests = db.relationship('PracticeTest', back_populates='backpack')
+
+    tests = db.relationship(
+      'PracticeTest',
+      primaryjoin="and_(BackpackItem.mat_type=='test', foreign(BackpackItem.study_mat_id)==PracticeTest.id)",
+      uselist=False
+  )
+    flashcards = db.relationship(
+      'FlashCardSet',
+      primaryjoin="and_(BackpackItem.mat_type=='flashcards', foreign(BackpackItem.study_mat_id)==FlashCardSet.id)",
+      uselist=False
+  )
+    # owner = db.relationship('User', back_populates='backpack')
+
+    # __mapper_args__ = {
+    #     "polymorphic_identity": "backpack",
+    #     "polymorphic_on": "mat_type",
+    # }
 
 
     def to_dict_basic(self):

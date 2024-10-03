@@ -14,8 +14,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     role = db.Column(db.String(50), nullable=False)
+    # backpack_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('BackpackItem.id')))
 
-    backpack = db.relationship('BackpackItem', back_populates='user')
+    backpack = db.relationship('BackpackItem', back_populates='owner')
     # since we dont need the user in backpackitem how do we write this?
     # because we do want the users backpack
 

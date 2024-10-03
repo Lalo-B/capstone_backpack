@@ -12,7 +12,11 @@ class FlashCardSet(db.Model):
     category = db.Column(db.String(100), nullable=False)
 
     flash_cards = db.relationship('FlashCard', back_populates='set', cascade='all, delete-orphan')
-    backpack = db.relationship('BackpackItem', back_populates='flash_card_sets')
+    # backpack = db.relationship('BackpackItem', back_populates='flash_card_sets')
+
+    # __mapper_args__ = {
+    #     'polymorphic_identity': 'flashcards'
+    # }
 
     def to_dict_basic(self):
         return {
