@@ -1,0 +1,15 @@
+
+.browse-tests-container{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    gap: 10px;
+}
+
+.one-test-browse{
+    border: 1px lightgrey solid;
+    border-radius: 10px;
+    background-color: #B3E5FC;
+    padding: 10px;
+    cursor: pointer;
+}

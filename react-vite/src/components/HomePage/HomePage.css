@@ -1,0 +1,20 @@
+.homepage-container{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    gap: 10px;
+}
+
+.flashcard-sets-homepage {
+    cursor: pointer;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.tests-homepage {
+    cursor: pointer;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    padding: 10px;
+}

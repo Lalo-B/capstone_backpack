@@ -28,6 +28,14 @@ def get_all_flashcards_and_sets():
     return [cards.to_dict() for cards in all_sets]
 
 
+@flashcard_routes.route('/all_cards')
+def get_all_cards():
+    '''
+    gets all the flash cards in a list
+    '''
+    cards = FlashCard.query.all()
+    return [card.to_dict_basic() for card in cards]
+
 @flashcard_routes.route('/new_set', methods=['POST'])
 @login_required
 def create_flashcard_set():

@@ -8,11 +8,16 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import temporaryReducer from './temporary';
 import studyMatsReducer from "./studyMats";
+import flashcardsReducer from "./flashcards";
+import questionsReducer from "./questions";
+
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   temporary: temporaryReducer,
-  mats: studyMatsReducer
+  mats: studyMatsReducer,
+  flashcards: flashcardsReducer,
+  questions: questionsReducer
 });
 
 let enhancer;

@@ -28,6 +28,15 @@ def get_all_tests():
     return [test.to_dict() for test in all_tests]
 
 
+@practice_test_routes.route('/all_Qs')
+def all_questions_only():
+    '''
+    gets all questions
+    '''
+    qs = Question.query.all()
+    return [q.to_dict_basic() for q in qs]
+
+
 @practice_test_routes.route("/new", methods=["POST"])
 @login_required
 def create_test():
