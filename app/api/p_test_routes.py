@@ -49,6 +49,7 @@ def create_test():
         new_test = PracticeTest(
             category=form.data["category"],
             owner_id=current_user.id,
+            name=form.data['name']
         )
         db.session.add(new_test)
         db.session.commit()
@@ -69,6 +70,7 @@ def create_question(test_id):
     form = QuestionForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
+        # print('',form.data['correctAnswer'])
         new_q = Question(
             question=form.data["question"],
             answer1=form.data["answer1"],
@@ -88,7 +90,7 @@ def create_question(test_id):
 @login_required
 def update_practice_test(test_id):
     """
-    update a practice test category
+    update a practice test category or name
     """
     test = PracticeTest.query.get(test_id)
     if not test:
@@ -99,6 +101,7 @@ def update_practice_test(test_id):
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         test.category = form.data["category"]
+        test.name = form.data["name"]
         db.session.commit()
         return test.to_dict_basic(), 200
     return {"errors": [e for e in form.errors]}, 400

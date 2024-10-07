@@ -12,3 +12,22 @@
     padding: 10px;
     cursor: pointer;
 }
+
+.one-card{
+    border: 1px lightgrey solid;
+    border-radius: 10px;
+    background-color: #B3E5FC;
+    padding: 10px;
+    transform: rotateX(0rad);
+    transition: transform 0.5s;
+}
+
+.front {
+    transform: rotateX(0rad);
+    transition: transform 0.5s;
+}
+
+.back {
+    transform: rotateX(-3rad);
+    transition: transform 0.5s;
+}

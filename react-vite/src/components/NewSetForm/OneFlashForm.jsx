@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { SubmitContext } from "../../context/SubmitContext";
 
 const OneFlashForm = () => {
     const [question, setQuestion] = useState('');
     const [answer, setAnswer] = useState('');
+    const { isSubmit, setIsSubmit } = useContext(SubmitContext);
 
     return (
-        <div>
+        <div className="one-card-new">
             <label>question:
                 <input
                     className='input'

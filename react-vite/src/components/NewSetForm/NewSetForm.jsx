@@ -4,17 +4,7 @@ import OneFlashForm from './OneFlashForm';
 
 const NewSetForm = () => {
     const [name, setName] = useState('');
-    const [count, setCount] = useState(1);
-    const [arr, setArr] = useState([]);
-    useEffect(() => {
-        for (let i = 0; i < count; i++) {
-            arr.push(1)
-        }
-    }, [count])
-    // need to skip initial render or something cuz the button doesnt work atm
-
-
-
+    const [arr, setArr] = useState([1]);
 
     return (
         <div>
@@ -31,13 +21,13 @@ const NewSetForm = () => {
                         />
                     </label>
                 </div>
-                {arr.map((e) => {
+                {arr.map((e,i) => {
                     return (
-                        <OneFlashForm key={count} />
+                        <OneFlashForm key={i} />
                     )
                 })}
             </form>
-            <button value={count} onClick={(prevCount) => { setCount(prevCount + 1) }}>+ add another card</button>
+            <button onClick={() => { setArr([...arr, 1]) }}>+ add another card</button>
         </div>
     )
 }

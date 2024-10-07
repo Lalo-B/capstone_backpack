@@ -4,7 +4,8 @@ from app.models import SCHEMA, db, environment, PracticeTest
 
 test1 = PracticeTest(
     owner_id=1,
-    category='micro-biology'
+    category='micro-biology',
+    name='micro biology practice test'
 )
 
 def seed_practice_tests():

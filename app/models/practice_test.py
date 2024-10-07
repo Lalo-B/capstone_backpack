@@ -9,6 +9,7 @@ class PracticeTest(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    name = db.Column(db.String(200), nullable=False)
     category = db.Column(db.Integer, nullable=False)
 
     questions = db.relationship('Question', back_populates='test', cascade='all, delete-orphan')
@@ -25,6 +26,7 @@ class PracticeTest(db.Model):
             "id": self.id,
             "ownerId": self.owner_id,
             "category": self.category,
+            "name":self.name
         }
 
     def to_dict(self):

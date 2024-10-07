@@ -1,0 +1,22 @@
+.new-test-form-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.one-question-new{
+    border: 1px lightgrey solid;
+    border-radius: 10px;
+    background-color: #B3E5FC;
+    padding: 10px;
+    /* width: fit-content; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.questions-container-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
