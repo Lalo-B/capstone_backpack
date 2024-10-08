@@ -75,7 +75,7 @@ def create_flashcard(set_id):
         return new_card.to_dict_basic(),201
     return {'errors': [error for error in card_form.errors]},400
 
-@flashcard_routes.route('/update/<int:card_id>', methods=["PUT"])
+@flashcard_routes.route('/update-card/<int:card_id>', methods=["PUT"])
 @login_required
 def update_card(card_id):
     '''
@@ -102,8 +102,44 @@ def update_card(card_id):
 
     return {'errors': [e for e in form.errors]}, 400
 
+@flashcard_routes.route('/update-set/<int:set_id>', methods=["PUT"])
+@login_required
+def update_set(set_id):
+    '''
+    update a set using set id
+    '''
+    sett = FlashCardSet.query.get(set_id)
+    if not sett:
+        return {"errors": "flash card set cannot be found with that card id"},404
 
-@flashcard_routes.route('/delete/<int:card_id>', methods=['DELETE'])
+    set_form = FlashCardSetForm()
+    set_form['csrf_token'].data = request.cookies['csrf_token']
+    if set_form.validate_on_submit():
+        sett.set_name = set_form.data['set_name']
+        sett.category = set_form.data['category']
+        db.session.commit()
+        return sett.to_dict_basic(),201
+    return {'errors': [error for error in set_form.errors]},400
+
+@flashcard_routes.route('/delete/<int:set_id>', methods=['DELETE'])
+@login_required
+def delete_set(set_id):
+    '''
+    delete a set by set id
+    '''
+    set = FlashCardSet.query.get(set_id)
+    if not set:
+        return {"errors":"cannot find set by this id"},404
+    thisId = set.id
+    if set.owner_id != current_user.id:
+        return {"message" : "Forbidden"}, 403
+
+    db.session.delete(set)
+    db.session.commit()
+    return {"message": "successfully deleted", "id": thisId},200
+
+
+@flashcard_routes.route('/delete-card/<int:card_id>', methods=['DELETE'])
 @login_required
 def delete_card(card_id):
     '''

@@ -2,35 +2,38 @@ import { useContext, useEffect, useState } from "react";
 import { SubmitContext } from "../../context/SubmitContext";
 import { useDispatch } from "react-redux";
 import * as setActions from '../../redux/flashcards';
+import { useNavigate } from "react-router-dom";
 
-const OneFlashForm = ({setId}) => {
-    // console.log(setId)
+
+const EditOneCard = ({card, setId}) => {
     const dispatch = useDispatch();
-    const [question, setQuestion] = useState('');
-    const [answer, setAnswer] = useState('');
+    const navigate = useNavigate();
+    const [question, setQuestion] = useState(card.question);
+    const [answer, setAnswer] = useState(card.answer);
     const { isSubmit } = useContext(SubmitContext);
-    const [newCard, setNewCard] = useState({});
+    const [updateCard, setUpdateCard] = useState();
 
     const helperF = async () => {
         // const val = await dispatch(setActions.makeNewCardThunk(newCard,setId))
         // console.log('this is return from dispatch',val)
         // return val
-        dispatch(setActions.makeNewCardThunk(newCard,setId))
+        dispatch(setActions.updateSingleCardThunk(updateCard, card.id))
+        .then(()=>navigate(`/flashcards/${setId}`))
     }
 
     useEffect(()=>{
-        if(isSubmit && setId){
+        if(isSubmit && card){
             helperF()
         }
-    },[isSubmit,setId])
+    },[isSubmit, card])
 
     useEffect(()=>{
         const tempC = {question, answer}
-        setNewCard(tempC)
+        setUpdateCard(tempC)
     },[question,answer])
 
     return (
-        <div className="one-card-new">
+        <div className="edit-one-card">
             <label>question:
                 <input
                     className='input'
@@ -52,4 +55,4 @@ const OneFlashForm = ({setId}) => {
         </div>
     )
 }
-export default OneFlashForm;
+export default EditOneCard;

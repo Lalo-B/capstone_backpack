@@ -11,6 +11,8 @@ import FlashcardSet from '../components/FlashcardSet';
 import TestDetailsPage from '../components/TestDetailsPage';
 import NewSetForm from '../components/NewSetForm/NewSetForm';
 import NewTestForm from '../components/NewTestForm';
+import EditSetPage from '../components/EditSetPage';
+import EditTestPage from '../components/EditTestPage';
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +44,10 @@ export const router = createBrowserRouter([
           {
             path: 'new',
             element: <NewSetForm />
+          },
+          {
+            path: 'edit/:id',
+            element: <EditSetPage />
           }
         ]
       },
@@ -59,6 +65,10 @@ export const router = createBrowserRouter([
           {
             path: 'new',
             element: <NewTestForm />
+          },
+          {
+            path: 'edit/:id',
+            element: <EditTestPage />
           }
         ],
       },

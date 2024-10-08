@@ -1,0 +1,22 @@
+.study-mats-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    gap: 10px;
+}
+
+.each-test-backpack {
+    border: 1px lightgrey solid;
+    border-radius: 10px;
+    background-color: #B3E5FC;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.each-set-backpack {
+    border: 1px lightgrey solid;
+    border-radius: 10px;
+    background-color: #B3E5FC;
+    padding: 10px;
+    cursor: pointer;
+}

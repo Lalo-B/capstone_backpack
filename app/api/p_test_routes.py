@@ -150,13 +150,13 @@ def delete_test(test_id):
     test = PracticeTest.query.get(test_id)
     if not test:
         return {"errors":"cannot find test by this id"},404
-
+    theId = test.id
     if test.owner_id != current_user.id:
         return {"message" : "Forbidden"}, 403
-
+    print('\n this is test to be deleted in back end \n', test.to_dict_basic())
     db.session.delete(test)
     db.session.commit()
-    return {"message": "successfully deleted"},200
+    return {"message": "successfully deleted", "id":theId},200
 
 
 @practice_test_routes.route('/delete-q/<int:question_id>', methods=['DELETE'])

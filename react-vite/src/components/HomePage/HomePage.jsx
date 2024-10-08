@@ -16,8 +16,7 @@ const HomePage = () => {
 
     return (
         <div>
-            <h1>Welcome to your Backpack</h1>
-            <div>materials in pack or backpack is empty message</div>
+            <h1>Welcome to Backpack</h1>
             <div>explore study materials</div>
             <div className='homepage-container'>
                 {mats && mats.sets && mats.sets.map((sett) => {
