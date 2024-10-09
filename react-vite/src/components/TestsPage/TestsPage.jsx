@@ -2,11 +2,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import './TestsPage.css';
 import * as testActions from '../../redux/questions';
 import * as matsActions from '../../redux/studyMats';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import { SubmitContext } from "../../context/SubmitContext";
 import { useNavigate } from 'react-router-dom';
 
 const TestsPage = () => {
     const tests = useSelector(state => state.mats.tests);
+    const { isSubmit, setIsSubmit } = useContext(SubmitContext);
     // const questions = useSelector(state => state.questions.byId);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -14,6 +16,7 @@ const TestsPage = () => {
     useEffect(() => {
         dispatch(matsActions.getAllMatsThunk())
         dispatch(testActions.getAllQuestionsThunk())
+        setIsSubmit(false);
     }, [dispatch])
 
     return (

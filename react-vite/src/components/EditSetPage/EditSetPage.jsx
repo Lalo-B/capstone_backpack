@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './EditSetPage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState, useContext } from 'react';
@@ -10,7 +10,6 @@ import { SubmitContext } from '../../context/SubmitContext';
 
 const EditSetPage = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const { id } = useParams();
     const sets = useSelector(state => state.mats.sets);
     const cards = useSelector(state => state.flashcards.bySetId);//object
@@ -50,9 +49,9 @@ const EditSetPage = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         const update = {
-            "set_name":name, category
+            "set_name": name, category
         }
-        dispatch(matActions.updateSetThunk(update,id))
+        dispatch(matActions.updateSetThunk(update, id))
         setIsSubmit(true)
         // now if i navigate here will it happen before the cards update?
         // is that possible?
@@ -65,7 +64,7 @@ const EditSetPage = () => {
             <h1>edit set {id} page</h1>
             {curSet && curSet.id}
             <form onSubmit={onSubmit}>
-                <div>
+                <div className='edit-set-info-container'>
                     <label>Set name:
                         <input
                             className='input'
@@ -85,15 +84,17 @@ const EditSetPage = () => {
                         />
                     </label>
                 </div>
-                {cards && curSet && cards[curSet.id] && cards[curSet.id].map((card) => {
-                    return (
-                        // <div key={card.id}> this is a card
-                        //     <input value={card.question} />
-                        //     <input value={card.answer} />
-                        // </div>
-                        <EditOneCard key={card.id} card={card} setId={curSet.id}/>
-                    )
-                })}
+                <div className='edit-set-cards-container'>
+                    {cards && curSet && cards[curSet.id] && cards[curSet.id].map((card) => {
+                        return (
+                            // <div key={card.id}> this is a card
+                            //     <input value={card.question} />
+                            //     <input value={card.answer} />
+                            // </div>
+                            <EditOneCard key={card.id} card={card} setId={curSet.id} />
+                        )
+                    })}
+                </div>
                 <button>save changes</button>
             </form>
             {/* <button onClick={() => { setArr([...arr, 1]) }}>+ add another card</button> */}

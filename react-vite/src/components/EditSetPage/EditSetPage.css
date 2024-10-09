@@ -1,3 +1,15 @@
+.edit-set-info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.edit-set-cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
 .edit-one-card{
     border: 1px lightgrey solid;
     border-radius: 10px;

@@ -2,16 +2,19 @@ import { useParams } from 'react-router-dom';
 import './TestDetailsPage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import OneQuestion from '../TestsPage/OneQuestion';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
+import { SubmitContext } from "../../context/SubmitContext";
 import * as questionActions from '../../redux/questions';
 
 const TestDetailsPage = () => {
+    const { isSubmit, setIsSubmit } = useContext(SubmitContext);
     const {id} = useParams();
     const questions = useSelector(state=>state.questions.byTestId)
     const dispatch = useDispatch();
 
     useEffect(()=>{
         dispatch(questionActions.getAllQuestionsThunk())
+        setIsSubmit(false);
     },[dispatch])
 
     return (

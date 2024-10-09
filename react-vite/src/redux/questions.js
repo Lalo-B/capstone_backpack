@@ -1,6 +1,7 @@
-const GET_ALL_QUESTIONS = 'questions/getAll';
-const MAKE_NEW_QUESTION = 'questions/createNewQuestion';
-const MAKE_NEW_PRACTICE_TEST = 'questions/createNewPracticeTest';
+const GET_ALL_QUESTIONS = 'questions/get_all';
+const MAKE_NEW_QUESTION = 'questions/create_new_question';
+const MAKE_NEW_PRACTICE_TEST = 'questions/create_new_practice_test';
+const UPDATE_QUESTION = 'questions/update_question';
 
 const getAllQuestions = (payload) => {
     return {
@@ -19,6 +20,13 @@ const makeNewPracticeTest = (payload) => {
 const makeNewQuestion = (payload) => {
     return {
         type: MAKE_NEW_QUESTION,
+        payload
+    }
+}
+
+const updateQuestion = (payload) => {
+    return {
+        type: UPDATE_QUESTION,
         payload
     }
 }
@@ -62,9 +70,25 @@ export const makeNewQuestionThunk = (newQ,testId) => async dispatch => {
     if(res.ok){
         console.log('this means res is ok')
         const data = await res.json();
-        console.log('this is data in thunk', data)
         dispatch(makeNewQuestion(data))
         return data
+    } else {
+        const errors = await res.json();
+        console.log('this is errors', errors)
+        return errors;
+    }
+}
+
+export const updateQuestionThunk = (payload, id) => async dispatch => {
+    const res = await fetch(`/api/practice-tests/update-q/${id}`,{
+        method: "PUT",
+        body: JSON.stringify(payload),
+        headers: {'Content-Type': 'application/json'}
+    })
+    if(res.ok){
+        const data = await res.json();
+        dispatch(updateQuestion(data));
+        return data;
     } else {
         const errors = await res.json();
         console.log('this is errors', errors)
@@ -98,6 +122,9 @@ export default function questionsReducer(state = initialState, action) {
             return {...state}
         }
         case MAKE_NEW_QUESTION:{
+            return {...state}
+        }
+        case UPDATE_QUESTION:{
             return {...state}
         }
         default:

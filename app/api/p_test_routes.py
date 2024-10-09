@@ -90,7 +90,7 @@ def create_question(test_id):
 @login_required
 def update_practice_test(test_id):
     """
-    update a practice test category or name
+    update a practice test category or name by test id
     """
     test = PracticeTest.query.get(test_id)
     if not test:

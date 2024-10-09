@@ -33,7 +33,7 @@ const NewSetForm = () => {
     return (
         <div>
             <h1>create a new flash card set</h1>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} className='new-set-form-container'>
                 <div>
                     <label>Set name:
                         <input
@@ -54,14 +54,16 @@ const NewSetForm = () => {
                         />
                     </label>
                 </div>
+                <div className='cards-container-form'>
                 {arr.map((e, i) => {
                     return (
                         <OneFlashForm key={i} setId={isSubmit ? createdSet?.id : null}/>
                     )
                 })}
+                </div>
                 <button>submit</button>
             </form>
-            <button onClick={() => { setArr([...arr, 1]) }}>+ add another card</button>
+            <button style={{marginTop: '10px'}}onClick={() => { setArr([...arr, 1]) }}>+ add another card</button>
         </div>
     )
 }
