@@ -1,3 +1,36 @@
+.nav-bar-all {
+  display: flex;
+  justify-content: space-between;
+}
+
+.backpack-logo {
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.right-side-nav-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 5px;
+  border: 1px solid lightgrey;
+  background-color: #B3E5FC;
+  border-radius: 30px;
+}
 .profile-dropdown {
   position: absolute;
+  top: 50px;
+  z-index: 1;
+  right: 18px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  background-color: #B3E5FC;
+  list-style-type: none;
+  padding: 10px;
+
+}
+
+.profile-dropdown > :hover{
+  /* text-shadow: grey; */
 }

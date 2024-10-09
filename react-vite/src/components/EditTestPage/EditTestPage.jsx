@@ -81,7 +81,7 @@ const EditTestPage = () => {
                 </div>
                 <button>submit</button>
             </form>
-            <button style={{marginTop: '10px'}} onClick={() => { setArr([...arr, 1]) }}>+ add another question</button>
+            {/* <button style={{marginTop: '10px'}} onClick={() => { setArr([...arr, 1]) }}>+ add another question</button> */}
         </div>
     )
 }

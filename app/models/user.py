@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy import MetaData
 
 
 class User(db.Model, UserMixin):
@@ -8,6 +9,16 @@ class User(db.Model, UserMixin):
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
+
+    # convention = {
+    # "ix": "ix_%(column_0_label)s",
+    # "uq": "uq_%(table_name)s_%(column_0_name)s",
+    # "ck": "ck_%(table_name)s_%(constraint_name)s",
+    # "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
+    # "pk": "pk_%(table_name)s"
+    # }
+
+    # metadata = MetaData(naming_convention=convention)
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)

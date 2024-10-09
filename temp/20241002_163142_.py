@@ -24,7 +24,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('study_mat_id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
-    sa.Column('mat_type', sa.String(length=50), nullable=False),
+    sa.Column('mat_type', sa.String(length=50), nullable=False), # manually added
     sa.ForeignKeyConstraint(['study_mat_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')

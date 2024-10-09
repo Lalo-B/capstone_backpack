@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from sqlalchemy import MetaData
 
 
 class Question(db.Model):
@@ -6,6 +7,16 @@ class Question(db.Model):
 
     if environment == "production":
         __table_args__ = {"schema": SCHEMA}
+
+    # convention = {
+    # "ix": "ix_%(column_0_label)s",
+    # "uq": "uq_%(table_name)s_%(column_0_name)s",
+    # "ck": "ck_%(table_name)s_%(constraint_name)s",
+    # "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
+    # "pk": "pk_%(table_name)s"
+    # }
+
+    # metadata = MetaData(naming_convention=convention)
 
     id = db.Column(db.Integer, primary_key=True)
     question = db.Column(db.String(500), nullable=False)

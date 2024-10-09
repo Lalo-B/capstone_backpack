@@ -5,6 +5,7 @@ import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { NavLink } from "react-router-dom";
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -41,6 +42,7 @@ function ProfileButton() {
 
   return (
     <>
+
       <button onClick={toggleMenu}>
         <FaUserCircle />
       </button>
@@ -50,6 +52,15 @@ function ProfileButton() {
             <>
               <li>{user.username}</li>
               <li>{user.email}</li>
+              <li>
+                <NavLink to="/backpack">My backpack</NavLink>
+              </li>
+              <li>
+                <NavLink to="/flashcards/new">New flashcard set</NavLink>
+              </li>
+              <li>
+                <NavLink to="/tests/new">New practice test</NavLink>
+              </li>
               <li>
                 <button onClick={logout}>Log Out</button>
               </li>
