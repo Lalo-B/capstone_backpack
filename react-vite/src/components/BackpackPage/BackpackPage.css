@@ -6,7 +6,7 @@
 }
 
 .each-test-backpack {
-    border: 1px lightgrey solid;
+    border: 1px black solid;
     border-radius: 10px;
     background-color: #B3E5FC;
     padding: 10px;
@@ -14,7 +14,7 @@
 }
 
 .each-set-backpack {
-    border: 1px lightgrey solid;
+    border: 1px black solid;
     border-radius: 10px;
     background-color: #B3E5FC;
     padding: 10px;

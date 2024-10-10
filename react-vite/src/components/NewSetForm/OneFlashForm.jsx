@@ -4,18 +4,24 @@ import { useDispatch } from "react-redux";
 import * as setActions from '../../redux/flashcards';
 
 const OneFlashForm = ({setId}) => {
-    // console.log(setId)
     const dispatch = useDispatch();
     const [question, setQuestion] = useState('');
     const [answer, setAnswer] = useState('');
     const { isSubmit } = useContext(SubmitContext);
     const [newCard, setNewCard] = useState({});
+    const [cardErrors, setCardErrors] = useState({});
 
     const helperF = async () => {
-        // const val = await dispatch(setActions.makeNewCardThunk(newCard,setId))
-        // console.log('this is return from dispatch',val)
-        // return val
         dispatch(setActions.makeNewCardThunk(newCard,setId))
+        // const temp = await dispatch(setActions.makeNewCardThunk(newCard,setId))
+        // if(Object.values(temp.errors).length > 0){
+        //     let errObj = {};
+        //     for(let er in temp.errors){
+        //         errObj[temp.errors[er]] = `there was a problem with ${temp.errors[er]}`;
+        //     }
+        //     setCardErrors(errObj)
+        //     console.log('errors in flash card',cardErrors)
+        // }
     }
 
     useEffect(()=>{

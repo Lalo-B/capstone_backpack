@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request, redirect
+from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import db, FlashCardSet, FlashCard
 from app.forms import FlashCardForm, FlashCardSetForm

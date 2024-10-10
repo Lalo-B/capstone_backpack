@@ -1,0 +1,19 @@
+.login-modal-div {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login-h1{
+    margin: 0;
+    width: fit-content;
+    margin-bottom: 10px;
+}
+
+.login-form-el {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}

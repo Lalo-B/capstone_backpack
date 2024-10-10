@@ -7,6 +7,37 @@
     -- after lightest: #B3E5FC;
 } */
 
+/* <uniquifier>: Use a unique and descriptive class name
+   <weight>: Use a value from 300 to 700 */
+
+* {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
 :root{
     background-color: #E3F2FD;
 }
+
+button {
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #B3E5FC;
+    /* color: white; */
+}
+button:hover {
+    background-color: #5eb4fa;
+    transition: background-color 0.5s;
+}
+
+input {
+    border: 1px solid black;
+    border-radius: 5px;
+    /* background-color: #E3F2FD; */
+    /* color: white; */
+}
+/* input::placeholder {
+    color: white;
+} */

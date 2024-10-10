@@ -7,7 +7,7 @@
 
 .flashcard-sets-homepage {
     cursor: pointer;
-    border: 1px solid lightgrey;
+    border: 1px solid black;
     border-radius: 10px;
     background-color: #B3E5FC;
     padding: 10px;
@@ -15,7 +15,7 @@
 
 .tests-homepage {
     cursor: pointer;
-    border: 1px lightgrey solid;
+    border: 1px black solid;
     border-radius: 10px;
     background-color: #B3E5FC;
     padding: 10px;

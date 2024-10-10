@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify, request, redirect
+from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import db, PracticeTest, Question, BackpackItem
+from app.models import db, PracticeTest, Question
 from app.forms import PracticeTestForm, QuestionForm
 
 practice_test_routes = Blueprint("practice_tests", __name__)

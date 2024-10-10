@@ -34,9 +34,9 @@ function LoginFormModal() {
   }
 
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="login-modal-div">
+      <h1 id='login-h1' >Log In</h1>
+      <form onSubmit={handleSubmit} className="login-form-el">
         <label>
           Email
           <input
@@ -60,7 +60,7 @@ function LoginFormModal() {
         <button type="submit">Log In</button>
         <button onClick={setDemo}>login as demo</button>
       </form>
-    </>
+    </div>
   );
 }
 

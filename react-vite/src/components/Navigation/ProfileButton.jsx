@@ -43,7 +43,7 @@ function ProfileButton() {
   return (
     <>
 
-      <button onClick={toggleMenu}>
+      <button onClick={toggleMenu} style={{ cursor: 'pointer' }}>
         <FaUserCircle />
       </button>
       {showMenu && (
@@ -53,13 +53,13 @@ function ProfileButton() {
               <li>{user.username}</li>
               <li>{user.email}</li>
               <li>
-                <NavLink to="/backpack">My backpack</NavLink>
+                <NavLink className='navbar-navlink' to="/backpack">My backpack</NavLink>
               </li>
               <li>
-                <NavLink to="/flashcards/new">New flashcard set</NavLink>
+                <NavLink className='navbar-navlink' to="/flashcards/new">New flashcard set</NavLink>
               </li>
               <li>
-                <NavLink to="/tests/new">New practice test</NavLink>
+                <NavLink className='navbar-navlink' to="/tests/new">New practice test</NavLink>
               </li>
               <li>
                 <button onClick={logout}>Log Out</button>

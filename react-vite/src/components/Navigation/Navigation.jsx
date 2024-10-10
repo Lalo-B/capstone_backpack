@@ -12,8 +12,8 @@ function Navigation() {
         <BsBackpack className='backpack-logo' onClick={()=>navigate('/')}/>
       </div>
       <div className="right-side-nav-bar">
-        <NavLink to="/flashcards/all">Flashcards</NavLink>
-        <NavLink to="/tests/all">Tests</NavLink>
+        <NavLink className='navbar-navlink' to="/flashcards/all">Flashcards</NavLink>
+        <NavLink className='navbar-navlink' to="/tests/all">Tests</NavLink>
         <ProfileButton />
       </div>
     </div>

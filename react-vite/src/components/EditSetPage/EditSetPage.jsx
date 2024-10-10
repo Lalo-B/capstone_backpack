@@ -64,8 +64,7 @@ const EditSetPage = () => {
     return (
         <div>
             <h1>edit set {id} page</h1>
-            {curSet && curSet.id}
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} style={{display:'flex', flexDirection: 'column', gap: '10px'}}>
                 <div className='edit-set-info-container'>
                     <label>Set name:
                         <input
@@ -74,6 +73,7 @@ const EditSetPage = () => {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder='Set name'
+                            style={{backgroundColor:'#B3E5FC'}}
                         />
                     </label>
                     <label>New set category:
@@ -83,6 +83,7 @@ const EditSetPage = () => {
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
                             placeholder='Set category'
+                            style={{backgroundColor:'#B3E5FC'}}
                         />
                     </label>
                 </div>
@@ -104,7 +105,7 @@ const EditSetPage = () => {
                 </div>
                 <button>save changes</button>
             </form>
-            <button onClick={() => { setArr([...arr, 1]) }}>+ add another card</button>
+            <button style={{marginTop: '10px'}} onClick={() => { setArr([...arr, 1]) }}>+ add another card</button>
         </div>
     )
 }
