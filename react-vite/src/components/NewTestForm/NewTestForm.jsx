@@ -50,7 +50,7 @@ const NewTestForm = () => {
                         style={{ backgroundColor: '#B3E5FC' }}
                     />
                 </label>
-                {errors.name && <p>Please enter a test name or limit the set name size</p>}
+                {errors.name && <p>Please enter a test name or limit the name size</p>}
                 <label>Set test category:
                     <input
                         className='input'

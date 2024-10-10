@@ -4,7 +4,7 @@ import * as questionActions from '../../redux/questions';
 import { SubmitContext } from '../../context/SubmitContext';
 import { useNavigate } from "react-router-dom";
 
-const OneQuestionForm = ({testId}) => {
+const OneQuestionForm = ({ testId }) => {
     // console.log('this is test id in the child component', testId)
     const { isSubmit } = useContext(SubmitContext);
     const navigate = useNavigate();
@@ -15,33 +15,41 @@ const OneQuestionForm = ({testId}) => {
     const [answer3, setAnswer3] = useState('');
     const [answer4, setAnswer4] = useState('');
     const [correctAnswer, setCorrectAnswer] = useState('');
-    const [newQ, setNewQ] = useState({})
+    const [newQ, setNewQ] = useState({});
+    const [errors, setErrors] = useState({});
 
-    const extraFunct = async() => {
+    const extraFunct = async () => {
         // const value = await dispatch(questionActions.makeNewQuestionThunk(newQ, testId))
         // return value
-        const res = await dispatch(questionActions.makeNewQuestionThunk(newQ,testId))
-        if(res){
+        const res = await dispatch(questionActions.makeNewQuestionThunk(newQ, testId))
+        if (!res.errors) {
             navigate(`/tests/${res.testId}`)
         }
+        if (res.errors) {
+            let errObj = {};
+            for (let er in res.errors) {
+                errObj[res.errors[er]] = `there was a problem with ${res.errors[er]}`;
+            }
+            setErrors(errObj)
+        }
     }
-    useEffect(()=>{
-        if(isSubmit && testId){
+    useEffect(() => {
+        if (isSubmit && testId) {
             extraFunct()
         }
-    },[isSubmit,testId])
+    }, [isSubmit, testId])
 
-    useEffect(()=>{
+    useEffect(() => {
         const tempQ = {
             question,
             answer1,
             answer2,
             answer3,
             answer4,
-            "correct_answer":correctAnswer
+            "correct_answer": correctAnswer
         }
         setNewQ(tempQ);
-    },[question,answer1,answer2,answer3,answer4,correctAnswer])
+    }, [question, answer1, answer2, answer3, answer4, correctAnswer])
 
     return (
         <div className='one-question-new'>
@@ -54,6 +62,7 @@ const OneQuestionForm = ({testId}) => {
                     placeholder='Set question'
                 />
             </label>
+            {errors.question && <p>please enter a question or limit the character count to less than 500</p>}
             <label>answer 1:
                 <input
                     className='input'
@@ -63,6 +72,7 @@ const OneQuestionForm = ({testId}) => {
                     placeholder='Set answer 1'
                 />
             </label>
+            {errors.answer1 && <p>please enter an answer or limit the character count to less than 500</p>}
             <label>answer 2:
                 <input
                     className='input'
@@ -72,6 +82,7 @@ const OneQuestionForm = ({testId}) => {
                     placeholder='Set answer 2'
                 />
             </label>
+            {errors.answer1 && <p>please enter an answer or limit the character count to less than 500</p>}
             <label>answer 3:
                 <input
                     className='input'
@@ -81,6 +92,7 @@ const OneQuestionForm = ({testId}) => {
                     placeholder='Set answer 3'
                 />
             </label>
+            {errors.answer1 && <p>please enter an answer or limit the character count to less than 500</p>}
             <label>answer 4:
                 <input
                     className='input'
@@ -90,6 +102,7 @@ const OneQuestionForm = ({testId}) => {
                     placeholder='Set answer 4'
                 />
             </label>
+            {errors.answer1 && <p>please enter an answer or limit the character count to less than 500</p>}
             <label> correct answer:
                 <select defaultValue={'select an answer'} onChange={(e) => setCorrectAnswer(e.target.value)}>
                     <option disabled={true}>select an answer</option>
@@ -99,6 +112,7 @@ const OneQuestionForm = ({testId}) => {
                     <option value={'answer4'}>answer 4</option>
                 </select>
             </label>
+            {errors.correct_answer && <p>please select a value for the correct answer</p>}
         </div>
     )
 }
