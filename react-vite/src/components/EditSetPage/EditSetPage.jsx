@@ -6,6 +6,7 @@ import * as cardActions from '../../redux/flashcards';
 import * as matActions from '../../redux/studyMats';
 import EditOneCard from './EditOneCard';
 import { SubmitContext } from '../../context/SubmitContext';
+import OneFlashForm from '../NewSetForm/OneFlashForm';
 
 
 const EditSetPage = () => {
@@ -17,6 +18,7 @@ const EditSetPage = () => {
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
     const { isSubmit, setIsSubmit } = useContext(SubmitContext);
+    const [arr, setArr] = useState([]);
     //! does this break if they do an update twice?--------------------------------------------------
 
     // const [arr, setArr] = useState([1]);
@@ -94,12 +96,15 @@ const EditSetPage = () => {
                             <EditOneCard key={card.id} card={card} setId={curSet.id} />
                         )
                     })}
+                    {arr && arr.map((e, i) => {
+                    return (
+                        <OneFlashForm key={i} setId={isSubmit ? curSet?.id : null}/>
+                    )
+                })}
                 </div>
                 <button>save changes</button>
             </form>
-            {/* <button onClick={() => { setArr([...arr, 1]) }}>+ add another card</button> */}
-            {/* then map over this array to do the add card thing but
-            atm dont worry about this */}
+            <button onClick={() => { setArr([...arr, 1]) }}>+ add another card</button>
         </div>
     )
 }

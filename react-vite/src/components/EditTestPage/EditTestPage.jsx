@@ -6,6 +6,7 @@ import * as questionActions from '../../redux/questions';
 import * as matActions from '../../redux/studyMats';
 import EditOneQuestion from './EditOneQuestion'
 import { SubmitContext } from '../../context/SubmitContext';
+import OneQuestionForm from '../NewTestForm/OneQuestionForm';
 
 const EditTestPage = () => {
     const {id} = useParams();
@@ -17,10 +18,12 @@ const EditTestPage = () => {
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
     const [curTest, setCurTest] = useState();
+    const [arr, setArr] = useState([]);
 
     useEffect(()=>{
         dispatch(matActions.getAllMatsThunk())
         dispatch(questionActions.getAllQuestionsThunk())
+        //maybe add setIsSubmit(false) here
     },[dispatch])
 
     useEffect(()=>{
@@ -78,10 +81,15 @@ const EditTestPage = () => {
                         <EditOneQuestion key={i} testId={id} entireQ={e}/>
                     )
                 })}
+                {arr && arr.map((e,i) => {
+                    return (
+                        <OneQuestionForm key={i} testId={isSubmit ? curTest?.id : null}/>
+                    )
+                })}
                 </div>
                 <button>submit</button>
             </form>
-            {/* <button style={{marginTop: '10px'}} onClick={() => { setArr([...arr, 1]) }}>+ add another question</button> */}
+            <button style={{marginTop: '10px'}} onClick={() => { setArr([...arr, 1]) }}>+ add another question</button>
         </div>
     )
 }

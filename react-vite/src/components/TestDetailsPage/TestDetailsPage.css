@@ -1,7 +1,6 @@
 .questions-container{
     display: flex;
     flex-direction: column;
-    margin: 10px;
     gap: 10px;
 }
 
@@ -10,4 +9,11 @@
     border-radius: 10px;
     background-color: #B3E5FC;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.one-question-actual-question {
+    margin: 10px 0px;
+    font-size: large;
 }
