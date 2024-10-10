@@ -14,6 +14,8 @@ const NewSetForm = () => {
     const [createdSet, setCreatedSet] = useState();
     const [errors, setErrors] = useState({});
 
+    useEffect(()=>{setIsSubmit(false)},[])
+
     const innerFunct = async (newSet) => {
         const temp = await dispatch(setActions.makeNewSetThunk(newSet))
         setCreatedSet(temp)

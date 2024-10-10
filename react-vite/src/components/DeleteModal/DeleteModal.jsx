@@ -19,7 +19,7 @@ const DeleteModal = ({setId,testId}) => {
         closeModal()
     }
     return (
-        <div>
+        <div className='delete-modal-div'>
             <h1>delete modal</h1>
             <p>are you sure you want to delete your study material?</p>
             <button onClick={handleClick}>Yes (delete material)</button>

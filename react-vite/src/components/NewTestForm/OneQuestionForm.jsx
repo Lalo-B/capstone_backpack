@@ -2,10 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import * as questionActions from '../../redux/questions';
 import { SubmitContext } from '../../context/SubmitContext';
+import { useNavigate } from "react-router-dom";
 
 const OneQuestionForm = ({testId}) => {
     // console.log('this is test id in the child component', testId)
     const { isSubmit } = useContext(SubmitContext);
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [question, setQuestion] = useState('');
     const [answer1, setAnswer1] = useState('');
@@ -18,7 +20,10 @@ const OneQuestionForm = ({testId}) => {
     const extraFunct = async() => {
         // const value = await dispatch(questionActions.makeNewQuestionThunk(newQ, testId))
         // return value
-        dispatch(questionActions.makeNewQuestionThunk(newQ,testId))
+        const res = await dispatch(questionActions.makeNewQuestionThunk(newQ,testId))
+        if(res){
+            navigate(`/tests/${res.testId}`)
+        }
     }
     useEffect(()=>{
         if(isSubmit && testId){

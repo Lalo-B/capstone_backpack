@@ -2,8 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { SubmitContext } from "../../context/SubmitContext";
 import { useDispatch } from "react-redux";
 import * as setActions from '../../redux/flashcards';
+import { useNavigate } from 'react-router-dom';
 
 const OneFlashForm = ({setId}) => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [question, setQuestion] = useState('');
     const [answer, setAnswer] = useState('');
@@ -12,7 +14,10 @@ const OneFlashForm = ({setId}) => {
     const [cardErrors, setCardErrors] = useState({});
 
     const helperF = async () => {
-        dispatch(setActions.makeNewCardThunk(newCard,setId))
+        const res = await dispatch(setActions.makeNewCardThunk(newCard,setId))
+        if(res){
+            navigate(`/flashcards/${res.setId}`)
+        }
         // const temp = await dispatch(setActions.makeNewCardThunk(newCard,setId))
         // if(Object.values(temp.errors).length > 0){
         //     let errObj = {};

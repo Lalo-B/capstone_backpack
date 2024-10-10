@@ -14,6 +14,8 @@ const NewTestForm = () => {
     const [createdTest, setCreatedTest] = useState();
     const [errors, setErrors] = useState({});
 
+    useEffect(()=>{setIsSubmit(false)},[])
+
     const onSubmit = (e) => {
         e.preventDefault()
         const newT = {
