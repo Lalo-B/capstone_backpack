@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import './TestDetailsPage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import OneQuestion from './OneQuestion';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { SubmitContext } from "../../context/SubmitContext";
 import * as questionActions from '../../redux/questions';
 
@@ -11,6 +11,7 @@ const TestDetailsPage = () => {
     const {id} = useParams();
     const questions = useSelector(state=>state.questions.byTestId)
     const dispatch = useDispatch();
+    const [stateScore, setStateScore] = useState();
 
     useEffect(()=>{
         dispatch(questionActions.getAllQuestionsThunk())
@@ -23,20 +24,19 @@ const TestDetailsPage = () => {
         const data = Object.fromEntries(new FormData(form));
         const score = {'length':0, 'correct': 0, 'incorrect': 0};
         for(let q in questions[id]){
-            if(questions[id][q].correctAnswer === data[q]){
-                score[q] = 'correct'
+            let id2 = questions[id][q].id
+            if(questions[id][q].correctAnswer === data[id2]){
+                score[id2] = 'correct'
                 score.length += 1
                 score.correct += 1
             } else {
-                score[q] = 'incorrect'
+                score[id2] = 'incorrect'
                 score.length += 1
                 score.incorrect += 1
             }
         }
         score.finalScore = (score.correct / score.length)
-        // console.log(score.correct)
-        // const scoreStr = `${score.finalScore*100}`
-        console.log(`Your score is: ${score.finalScore*100}%`)
+        setStateScore(score)
     };
 
     return (
@@ -48,6 +48,7 @@ const TestDetailsPage = () => {
                 })}
             <button style={{marginTop: '10px'}}>submit test</button>
             </form>
+            {stateScore && <p>Your score is {stateScore.finalScore*100}%</p>}
         </div>
     )
 }
