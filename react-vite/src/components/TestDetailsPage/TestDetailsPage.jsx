@@ -39,6 +39,8 @@ const TestDetailsPage = () => {
         setStateScore(score)
     };
 
+    if(!questions)return <h1>Loading...</h1>
+
     return (
         <div style={{margin: '10px'}}>
             <h1>Practice test {id} page</h1>
