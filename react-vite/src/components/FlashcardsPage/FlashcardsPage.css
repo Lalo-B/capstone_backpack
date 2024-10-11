@@ -13,6 +13,24 @@
     cursor: pointer;
 }
 
+.arrow-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.arrow-in-sets {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.arrow-in-sets:hover {
+    background-color: #5eb4fa;
+    transition: background-color 0.2s;
+}
+
 .one-card{
     border: 1px black solid;
     border-radius: 10px;
@@ -20,6 +38,11 @@
     padding: 10px;
     transform: rotateX(0rad);
     transition: transform 0.5s;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .front {
