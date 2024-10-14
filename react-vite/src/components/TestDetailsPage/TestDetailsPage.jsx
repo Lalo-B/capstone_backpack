@@ -53,7 +53,7 @@ const TestDetailsPage = () => {
 
     return (
         <div style={{margin: 'auto', maxWidth: '500px'}}>
-            <h1>{tests && tests.find((t)=>t.id === +id).name}</h1>
+            <h1>{tests && tests.find((t)=>t.id === +id) ? tests.find((t)=>t.id === +id).name : ''}</h1>
             <form id='p-test-form' onSubmit={onSubmit} className='questions-container'>
                 {questions&& questions[id] && questions[id].map((q) => {
                     return (<OneQuestion key={q.id} q={q} score={stateScore}/>)
