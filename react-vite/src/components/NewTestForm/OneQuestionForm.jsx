@@ -31,6 +31,7 @@ const OneQuestionForm = ({ testId }) => {
                 errObj[res.errors[er]] = `there was a problem with ${res.errors[er]}`;
             }
             setErrors(errObj)
+            console.log(errors)
         }
     }
     useEffect(() => {
@@ -82,7 +83,7 @@ const OneQuestionForm = ({ testId }) => {
                     placeholder='Set answer 2'
                 />
             </label>
-            {errors.answer1 && <p>please enter an answer or limit the character count to less than 500</p>}
+            {errors.answer2 && <p>please enter an answer or limit the character count to less than 500</p>}
             <label>answer 3:
                 <input
                     className='input'
@@ -92,7 +93,7 @@ const OneQuestionForm = ({ testId }) => {
                     placeholder='Set answer 3'
                 />
             </label>
-            {errors.answer1 && <p>please enter an answer or limit the character count to less than 500</p>}
+            {errors.answer3 && <p>please enter an answer or limit the character count to less than 500</p>}
             <label>answer 4:
                 <input
                     className='input'
@@ -102,7 +103,7 @@ const OneQuestionForm = ({ testId }) => {
                     placeholder='Set answer 4'
                 />
             </label>
-            {errors.answer1 && <p>please enter an answer or limit the character count to less than 500</p>}
+            {errors.answer4 && <p>please enter an answer or limit the character count to less than 500</p>}
             <label> correct answer:
                 <select defaultValue={'select an answer'} onChange={(e) => setCorrectAnswer(e.target.value)}>
                     <option disabled={true}>select an answer</option>

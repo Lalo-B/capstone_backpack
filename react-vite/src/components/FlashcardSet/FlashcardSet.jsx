@@ -15,6 +15,7 @@ const FlashcardSet = () => {
     const flashcards = useSelector(state => state.flashcards.bySetId)
     const { isSubmit, setIsSubmit } = useContext(SubmitContext);
     const [curIndex, setCurIndex] = useState(0);
+    const sets = useSelector(state=>state.mats.sets)
 
     useEffect(() => {
         dispatch(matsActions.getAllMatsThunk())
@@ -42,13 +43,13 @@ const FlashcardSet = () => {
         if (curIndex < flashcards[id].length - 1 && val === 'up') {
             setCurIndex(curIndex + 1)
         }
-        console.log(curIndex)
+        // console.log(curIndex)
     }
     if (!flashcards) return <h1>loading ...</h1>
 
     return (
-        <div>
-            <h1>flashcard set page {id}</h1>
+        <div style={{margin: 'auto', maxWidth: '500px'}}>
+            <h1>{sets && sets.find((t)=>t.id === +id).setName}</h1>
             <div className='flashcards-container-all'>
                 {/* {flashcards && flashcards[id] && flashcards[id].map((card,i) => {
                     return (

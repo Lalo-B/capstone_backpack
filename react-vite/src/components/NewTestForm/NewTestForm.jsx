@@ -37,7 +37,7 @@ const NewTestForm = () => {
     }
 
     return (
-        <div>
+        <div style={{margin: 'auto', maxWidth: '500px'}}>
             <h1>create a new practice test</h1>
             <form className='new-test-form-container' onSubmit={onSubmit}>
                 <label>Set test name:

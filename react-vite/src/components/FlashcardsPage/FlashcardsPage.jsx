@@ -5,6 +5,7 @@ import { SubmitContext } from "../../context/SubmitContext";
 import * as flashcardActions from '../../redux/flashcards';
 import * as matsActions from '../../redux/studyMats';
 import { useNavigate } from 'react-router-dom';
+import * as sessionActions from '../../redux/session';
 
 
 const FlashcardsPage = () => {
@@ -18,6 +19,7 @@ const FlashcardsPage = () => {
     useEffect(() => {
         dispatch(matsActions.getAllMatsThunk())
         dispatch(flashcardActions.getAllFlashcardsThunk())
+        dispatch(sessionActions.getAllUsersThunk())
         setIsSubmit(false);
     }, [dispatch]);
 
