@@ -18,7 +18,7 @@ const OneFlashForm = ({ setId }) => {
         // console.log(res)
         //if res success thenits the flash card if error its errors =[]
         if (!temp.errors) {
-            navigate(`/flashcards/${res.setId}`)
+            navigate(`/flashcards/${temp.setId}`)
         }
         if (temp.errors) {
             // const temp = await dispatch(setActions.makeNewCardThunk(newCard, setId))

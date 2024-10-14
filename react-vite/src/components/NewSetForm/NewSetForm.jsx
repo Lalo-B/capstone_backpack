@@ -40,7 +40,7 @@ const NewSetForm = () => {
 
 
     return (
-        <div>
+        <div style={{margin: 'auto', maxWidth: '500px'}}>
             <h1>create a new flash card set</h1>
             <form onSubmit={onSubmit} className='new-set-form-container'>
                 <label>Set name:

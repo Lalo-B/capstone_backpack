@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './TestsPage.css';
 import * as testActions from '../../redux/questions';
 import * as matsActions from '../../redux/studyMats';
+import * as sessionActions from '../../redux/session';
 import { useContext, useEffect } from 'react';
 import { SubmitContext } from "../../context/SubmitContext";
 import { useNavigate } from 'react-router-dom';
@@ -16,11 +17,12 @@ const TestsPage = () => {
     useEffect(() => {
         dispatch(matsActions.getAllMatsThunk())
         dispatch(testActions.getAllQuestionsThunk())
+        dispatch(sessionActions.getAllUsersThunk())
         setIsSubmit(false);
     }, [dispatch])
 
     return (
-        <div>
+        <div style={{margin: 'auto', maxWidth: '500px'}}>
             <h1>Browse Practice Tests</h1>
             <div className='browse-tests-container'>
                 {tests && tests.map((test) => {

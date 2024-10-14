@@ -37,7 +37,7 @@ const BackpackPage = () => {
     }, [user, sets, tests])
 
     return (
-        <div>
+        <div style={{margin: 'auto', maxWidth: '500px'}}>
             <h1>Your Backpack</h1>
             <p>Here you can manage the materials you've created</p>
             <div className='study-mats-container'>
@@ -48,7 +48,7 @@ const BackpackPage = () => {
                             <div key={`${sett.id},set`} className='each-set-backpack' onClick={() => navigate(`/flashcards/${sett.id}`)}>
                                 <div>{sett.setName}</div>
                                 <div>Category: {sett.category}</div>
-                                <div>Created By: {sett.userId}</div>
+                                {/* <div>Created By: {sett.userId}</div> */}
                             </div>
                             <button onClick={() => navigate(`/flashcards/edit/${sett.id}`)}>edit</button>
                             <OpenModalButton
@@ -67,7 +67,7 @@ const BackpackPage = () => {
                             <div key={`${test.id},test`} className='each-test-backpack' onClick={() => navigate(`/tests/${test.id}`)}>
                                 <div>{test.name}</div>
                                 <div>Category: {test.category}</div>
-                                <div>Created By: {test.ownerId}</div>
+                                {/* <div>Created By: {test.ownerId}</div> */}
                             </div>
                             <button onClick={() => navigate(`/tests/edit/${test.id}`)}>edit</button>
                             <OpenModalButton
