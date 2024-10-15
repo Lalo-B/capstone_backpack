@@ -24,7 +24,7 @@ const FlashcardsPage = () => {
     }, [dispatch]);
 
     return (
-        <div>
+        <div style={{margin: 'auto', maxWidth: '500px'}}>
             <h1>Browse Flashcard Sets</h1>
             <div className='browse-sets-container'>
                 {sets && sets.map((sett) => {
