@@ -1,6 +1,7 @@
 .nav-bar-all {
   display: flex;
   justify-content: space-between;
+  margin: 10px;
 }
 
 .backpack-logo {

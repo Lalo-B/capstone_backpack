@@ -63,7 +63,7 @@ const TestDetailsPage = () => {
             <button style={{marginTop: '10px', width: '100%'}} onClick={()=>{
                 const form = document.getElementById('p-test-form');
                 form.reset();
-                // alert('test was reset!')
+                setStateScore()
             }}>reset test</button>
             {stateScore && <p>Your score is {stateScore.finalScore*100}%</p>}
         </div>
