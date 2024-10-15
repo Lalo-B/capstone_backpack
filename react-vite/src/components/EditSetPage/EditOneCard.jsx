@@ -12,13 +12,20 @@ const EditOneCard = ({card, setId}) => {
     const [answer, setAnswer] = useState(card.answer);
     const { isSubmit } = useContext(SubmitContext);
     const [updateCard, setUpdateCard] = useState();
+    const [errors, setErrors] = useState({});
 
     const helperF = async () => {
-        // const val = await dispatch(setActions.makeNewCardThunk(newCard,setId))
-        // console.log('this is return from dispatch',val)
-        // return val
-        dispatch(setActions.updateSingleCardThunk(updateCard, card.id))
-        .then(()=>navigate(`/flashcards/${setId}`))
+        const res = await dispatch(setActions.updateSingleCardThunk(updateCard, card.id))
+        if(res.errors && Object.values(res.errors).length > 0){
+            let errObj = {};
+            for(let er in res.errors){
+                errObj[res.errors[er]] = `there was a problem with ${res.errors[er]}`;
+            }
+            setErrors(errObj)
+        }
+        if(!res.errors){
+            navigate(`/flashcards/${setId}`)
+        }
     }
 
     useEffect(()=>{
@@ -43,6 +50,7 @@ const EditOneCard = ({card, setId}) => {
                     placeholder='Set question'
                 />
             </label>
+            {errors.question && <p>Please input a question or limit the size of the question to less than 500 characters</p>}
             <label>answer:
                 <input
                     className='input'
@@ -52,6 +60,7 @@ const EditOneCard = ({card, setId}) => {
                     placeholder='Set answer'
                 />
             </label>
+            {errors.answer && <p>Please input an answer or limit the size of the answer to less than 500 characters</p>}
         </div>
     )
 }

@@ -15,13 +15,25 @@ const EditOneQuestion = ({entireQ, testId}) => {
     const [answer3, setAnswer3] = useState(entireQ.answer3);
     const [answer4, setAnswer4] = useState(entireQ.answer4);
     const [correctAnswer, setCorrectAnswer] = useState(entireQ.correctAnswer);
-    const [curQ, setCurQ] = useState({})
+    const [curQ, setCurQ] = useState({});
+    const [errors, setErrors] = useState({});
 
     const helperF = async () => {
         // const val = await dispatch(questionActions.updateQuestionThunk(curQ,entireQ.id))
         // console.log(val)
-        dispatch(questionActions.updateQuestionThunk(curQ,entireQ.id))
-        .then(()=>navigate(`/tests/${testId}`))
+        const res = await dispatch(questionActions.updateQuestionThunk(curQ,entireQ.id))
+        if (res.errors && Object.values(res.errors).length > 0) {
+            let errObj = {};
+            for (let er in res.errors) {
+                errObj[res.errors[er]] = `there was a problem with ${res.errors[er]}`;
+            }
+            setErrors(errObj)
+            console.log(errors)
+        }
+        if(!res.errors){
+            navigate(`/tests/${testId}`)
+        }
+        //maybe change this to res.testid or res.id to make it rely on res
     }
     useEffect(()=>{
         if(isSubmit && testId){
@@ -52,6 +64,7 @@ const EditOneQuestion = ({entireQ, testId}) => {
                     placeholder='Set question'
                 />
             </label>
+            {errors.question && <p>please enter a question or limit the character count to less than 500</p>}
             <label>answer 1:
                 <input
                     className='input'
@@ -61,6 +74,7 @@ const EditOneQuestion = ({entireQ, testId}) => {
                     placeholder='Set answer 1'
                 />
             </label>
+            {errors.answer1 && <p>please enter an answer or limit the character count to less than 500</p>}
             <label>answer 2:
                 <input
                     className='input'
@@ -70,6 +84,7 @@ const EditOneQuestion = ({entireQ, testId}) => {
                     placeholder='Set answer 2'
                 />
             </label>
+            {errors.answer2 && <p>please enter an answer or limit the character count to less than 500</p>}
             <label>answer 3:
                 <input
                     className='input'
@@ -79,6 +94,7 @@ const EditOneQuestion = ({entireQ, testId}) => {
                     placeholder='Set answer 3'
                 />
             </label>
+            {errors.answer3 && <p>please enter an answer or limit the character count to less than 500</p>}
             <label>answer 4:
                 <input
                     className='input'
@@ -88,6 +104,7 @@ const EditOneQuestion = ({entireQ, testId}) => {
                     placeholder='Set answer 4'
                 />
             </label>
+            {errors.answer4 && <p>please enter an answer or limit the character count to less than 500</p>}
             <label> correct answer:
                 <select value={correctAnswer} onChange={(e) => setCorrectAnswer(e.target.value)}>
                     <option disabled={true}>select an answer</option>
@@ -97,6 +114,7 @@ const EditOneQuestion = ({entireQ, testId}) => {
                     <option value={'answer4'}>answer 4</option>
                 </select>
             </label>
+            {errors.correct_answer && <p>please select a value for the correct answer</p>}
         </div>
     )
 }

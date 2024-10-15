@@ -19,6 +19,7 @@ const EditTestPage = () => {
     const [category, setCategory] = useState('');
     const [curTest, setCurTest] = useState();
     const [arr, setArr] = useState([]);
+    const [errors, setErrors] = useState({});
 
     useEffect(() => {
         dispatch(matActions.getAllMatsThunk())
@@ -44,10 +45,17 @@ const EditTestPage = () => {
         setInputs()
     }, [curTest])
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
         const update = { name, category }
-        dispatch(matActions.updateTestThunk(update, id))
+        const res = await dispatch(matActions.updateTestThunk(update, id))
+        if(res.errors && Object.values(res.errors).length > 0){
+            let errObj = {};
+            for(let er in res.errors){
+                errObj[res.errors[er]] = `there was a problem with ${res.errors[er]}`;
+            }
+            setErrors(errObj)
+        }
         setIsSubmit(true)
     }
 
@@ -65,6 +73,7 @@ const EditTestPage = () => {
                         style={{ backgroundColor: '#B3E5FC' }}
                     />
                 </label>
+                {errors.name && <p>Please enter a test name or limit the name size</p>}
                 <label>Set test category:
                     <input
                         className='input'
@@ -75,6 +84,7 @@ const EditTestPage = () => {
                         style={{ backgroundColor: '#B3E5FC' }}
                     />
                 </label>
+                {errors.category && <p>Please enter a category or limit the category size</p>}
                 <div className='update-questions-container-form'>
                     {q && curTest && q[curTest.id] && q[curTest.id].map((e, i) => {
                         return (

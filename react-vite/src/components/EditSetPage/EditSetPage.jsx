@@ -19,6 +19,7 @@ const EditSetPage = () => {
     const [category, setCategory] = useState('');
     const { isSubmit, setIsSubmit } = useContext(SubmitContext);
     const [arr, setArr] = useState([]);
+    const [errors, setErrors] = useState({});
     //! does this break if they do an update twice?--------------------------------------------------
 
     // const [arr, setArr] = useState([1]);
@@ -48,17 +49,20 @@ const EditSetPage = () => {
         setInputs()
     }, [curSet])
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         const update = {
             "set_name": name, category
         }
-        dispatch(matActions.updateSetThunk(update, id))
+        const res = await dispatch(matActions.updateSetThunk(update, id))
+        if(res.errors && Object.values(res.errors).length > 0){
+            let errObj = {};
+            for(let er in res.errors){
+                errObj[res.errors[er]] = `there was a problem with ${res.errors[er]}`;
+            }
+            setErrors(errObj)
+        }
         setIsSubmit(true)
-        // now if i navigate here will it happen before the cards update?
-        // is that possible?
-        // maybe we need to await this
-        // navigate(`/flashcards/${id}`) i was right doesnt update
     }
 
     return (
@@ -76,6 +80,7 @@ const EditSetPage = () => {
                             style={{backgroundColor:'#B3E5FC'}}
                         />
                     </label>
+                    {errors.set_name && <p>Please enter a set name or limit the set name size</p>}
                     <label>New set category:
                         <input
                             className='input'
@@ -86,6 +91,7 @@ const EditSetPage = () => {
                             style={{backgroundColor:'#B3E5FC'}}
                         />
                     </label>
+                    {errors.category && <p>Please enter a category or limit the category size</p>}
                 </div>
                 <div className='edit-set-cards-container'>
                     {cards && curSet && cards[curSet.id] && cards[curSet.id].map((card) => {
