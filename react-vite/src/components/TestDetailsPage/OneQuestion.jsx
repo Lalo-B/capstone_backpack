@@ -13,6 +13,9 @@ const OneQuestion = ({ q, score }) => {
                 setColor('red')
             }
         }
+        if(!score){
+            setColor('')
+        }
     },[score])
 
     return (

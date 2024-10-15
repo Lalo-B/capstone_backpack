@@ -17,8 +17,15 @@
   font-style: normal;
 }
 
-:root{
+body {
     background-color: #E3F2FD;
+    margin: 0px;
+}
+
+#root{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 button {
