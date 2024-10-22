@@ -16,7 +16,7 @@ const Sockets = () => {
 
     useEffect(() => {
         // create websocket/connect
-        socket = io('https://capstone-backpack.onrender.com/messaging')
+        socket = io('https://capstone-backpack.onrender.com')
         // socket = io('http://127.0.0.1:8000/');
 
         // we are connected message
