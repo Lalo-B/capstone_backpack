@@ -13,6 +13,7 @@ import NewSetForm from '../components/NewSetForm/NewSetForm';
 import NewTestForm from '../components/NewTestForm';
 import EditSetPage from '../components/EditSetPage';
 import EditTestPage from '../components/EditTestPage';
+import Sockets from '../components/Sockets/Sockets';
 
 export const router = createBrowserRouter([
   {
@@ -76,6 +77,10 @@ export const router = createBrowserRouter([
         path: "backpack",
         element: <BackpackPage />,
       },
+      {
+        path: 'messaging',
+        element: <Sockets />
+      }
     ],
   },
 ]);

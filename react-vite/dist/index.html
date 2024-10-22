@@ -9,7 +9,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="/icon.png">
-  <script type="module" crossorigin src="/assets/index-154653aa.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
+    integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" charset="utf-8">
+    var socket = io();
+    socket.on('connect', function () {
+      socket.emit('my event', { data: 'I\'m connected!' });
+    });
+  </script>
+  <script type="module" crossorigin src="/assets/index-8f27c190.js"></script>
   <link rel="stylesheet" href="/assets/index-1ba727dd.css">
 </head>
 
