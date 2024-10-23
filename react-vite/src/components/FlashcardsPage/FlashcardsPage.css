@@ -13,6 +13,10 @@
     cursor: pointer;
 }
 
+.one-set-in-browse:hover {
+    transform: scale(1.01);
+}
+
 .arrow-box {
     display: flex;
     justify-content: center;
