@@ -4,13 +4,17 @@ import './HomePage.css';
 import { useEffect } from 'react';
 import * as matsActions from '../../redux/studyMats';
 import * as sessionActions from '../../redux/session';
+import OpenModalButton from '../OpenModalButton/OpenModalButton';
+import SignupFormModal from '../SignupFormModal';
+import LoginFormModal from '../LoginFormModal';
+import Carousel from './Carousel';
 
 const HomePage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const mats = useSelector(state => state.mats);
     const flashcards = useSelector(state => state.flashcards);
-    const users = useSelector(state=>state.session.users);
+    const users = useSelector(state => state.session.users);
 
     useEffect(() => {
         dispatch(matsActions.getAllMatsThunk())
@@ -18,8 +22,22 @@ const HomePage = () => {
     }, [dispatch])
 
     return (
-        <div style={{margin: 'auto', maxWidth: '500px'}}>
-            <h1>Welcome to Backpack</h1>
+        <div style={{ margin: 'auto', maxWidth: '500px' }}>
+            <h1 className='home-page-header'>Welcome to Backpack</h1>
+            <p style={{ textAlign: 'center' }}> Take the time to learn
+                something new, using flashcards or practice tests from
+                a wide selection of different topics.</p>
+            <div className='button-holder'>
+                <OpenModalButton
+                    buttonText='sign up'
+                    modalComponent={<SignupFormModal />}
+                />
+                <OpenModalButton
+                    buttonText='login'
+                    modalComponent={<LoginFormModal />}
+                />
+            </div>
+            {/* <Carousel/> */}
             <div className='homepage-container'>
                 Flashcards:
                 {/* <div className='set-container-actual'> */}
@@ -27,9 +45,9 @@ const HomePage = () => {
                     // console.log(sett)
                     return (
                         <div className='flashcard-sets-homepage' onClick={() => navigate(`/flashcards/${sett.id}`)} key={`flashcards_${sett.id}`}>
-                            <div>set name: {sett.setName}</div>
-                            <div>set category: {sett.category}</div>
-                            <div>created by: {users?.find((user)=>user.id === sett.userId).username}</div>
+                            <div>{sett.setName}</div>
+                            {/* <div>set category: {sett.category}</div> */}
+                            <div>Author: {users?.find((user) => user.id === sett.userId).username}</div>
                         </div>
                     )
                 })}
@@ -38,9 +56,9 @@ const HomePage = () => {
                 {mats && mats.tests && mats.tests.map((test) => {
                     return (
                         <div className='tests-homepage' onClick={() => navigate(`/tests/${test.id}`)} key={`test_${test.id}`}>
-                            <div>test name: {test.name}</div>
-                            <div>test category: {test.category}</div>
-                            <div>created by: {users?.find((user)=>user.id === test.ownerId).username}</div>
+                            <div>{test.name}</div>
+                            {/* <div>test category: {test.category}</div> */}
+                            <div>Author: {users?.find((user) => user.id === test.ownerId).username}</div>
                         </div>
                     )
                 })}
