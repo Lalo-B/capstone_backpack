@@ -20,8 +20,9 @@ const HomePage = () => {
     return (
         <div style={{margin: 'auto', maxWidth: '500px'}}>
             <h1>Welcome to Backpack</h1>
-            <div>explore study materials</div>
             <div className='homepage-container'>
+                Flashcards:
+                {/* <div className='set-container-actual'> */}
                 {mats && mats.sets && mats.sets.map((sett) => {
                     // console.log(sett)
                     return (
@@ -32,6 +33,8 @@ const HomePage = () => {
                         </div>
                     )
                 })}
+                {/* </div> */}
+                Tests:
                 {mats && mats.tests && mats.tests.map((test) => {
                     return (
                         <div className='tests-homepage' onClick={() => navigate(`/tests/${test.id}`)} key={`test_${test.id}`}>

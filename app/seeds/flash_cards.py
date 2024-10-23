@@ -108,6 +108,126 @@ flashcard_21 = FlashCard(
     answer = '-bacillus (little rod) -coccus (grain or berry) -spirillum (coiled or helical)',
     set_id = 1
 )
+# Assuming you have a FlashCard class defined somewhere
+flashcard_22 = FlashCard(
+    question="What is the largest organ in the human body?",
+    answer="Skin",
+    set_id=2
+)
+
+flashcard_23 = FlashCard(
+    question="How many bones are in the adult human body?",
+    answer="206",
+    set_id=2
+)
+
+flashcard_24 = FlashCard(
+    question="What is the main function of the heart?",
+    answer="To pump blood throughout the body",
+    set_id=2
+)
+
+flashcard_25 = FlashCard(
+    question="What is the basic unit of life?",
+    answer="Cell",
+    set_id=2
+)
+
+flashcard_26 = FlashCard(
+    question="Which system is responsible for transporting oxygen and nutrients?",
+    answer="Circulatory system",
+    set_id=2
+)
+
+flashcard_27 = FlashCard(
+    question="What part of the brain controls balance?",
+    answer="Cerebellum",
+    set_id=2
+)
+
+flashcard_28 = FlashCard(
+    question="What is the function of red blood cells?",
+    answer="To carry oxygen",
+    set_id=2
+)
+
+flashcard_29 = FlashCard(
+    question="Where is the femur located?",
+    answer="Thigh",
+    set_id=2
+)
+
+flashcard_30 = FlashCard(
+    question="What organ is primarily responsible for detoxification?",
+    answer="Liver",
+    set_id=2
+)
+
+flashcard_31 = FlashCard(
+    question="Which muscle is responsible for breathing?",
+    answer="Diaphragm",
+    set_id=2
+)
+flashcard_32 = FlashCard(
+    question="What is the unit of force in the International System of Units (SI)?",
+    answer="Newton",
+    set_id=3
+)
+
+flashcard_33 = FlashCard(
+    question="What is the law of conservation of energy?",
+    answer="Energy cannot be created or destroyed, only transformed.",
+    set_id=3
+)
+
+flashcard_34 = FlashCard(
+    question="What is the acceleration due to gravity on Earth?",
+    answer="9.81 m/s²",
+    set_id=3
+)
+
+flashcard_35 = FlashCard(
+    question="What is the formula for calculating kinetic energy?",
+    answer="KE = 0.5 * m * v²",
+    set_id=3
+)
+
+flashcard_36 = FlashCard(
+    question="What is the phenomenon where light bends as it passes through different media?",
+    answer="Refraction",
+    set_id=3
+)
+
+flashcard_37 = FlashCard(
+    question="What is the principle that states an object in motion stays in motion unless acted upon by an external force?",
+    answer="Newton's First Law of Motion",
+    set_id=3
+)
+
+flashcard_38 = FlashCard(
+    question="What is the speed of light in a vacuum?",
+    answer="Approximately 299,792 km/s",
+    set_id=3
+)
+
+flashcard_39 = FlashCard(
+    question="What is the relationship between frequency and wavelength in a wave?",
+    answer="Frequency is inversely proportional to wavelength.",
+    set_id=3
+)
+
+flashcard_40 = FlashCard(
+    question="What is the formula for calculating gravitational potential energy?",
+    answer="PE = m * g * h",
+    set_id=3
+)
+
+flashcard_41 = FlashCard(
+    question="What is the name of the device used to measure atmospheric pressure?",
+    answer="Barometer",
+    set_id=3
+)
+
 
 def seed_flash_cards():
     db.session.add(flashcard_1)
@@ -131,6 +251,26 @@ def seed_flash_cards():
     db.session.add(flashcard_19)
     db.session.add(flashcard_20)
     db.session.add(flashcard_21)
+    db.session.add(flashcard_22)
+    db.session.add(flashcard_23)
+    db.session.add(flashcard_24)
+    db.session.add(flashcard_25)
+    db.session.add(flashcard_26)
+    db.session.add(flashcard_27)
+    db.session.add(flashcard_28)
+    db.session.add(flashcard_29)
+    db.session.add(flashcard_30)
+    db.session.add(flashcard_31)
+    db.session.add(flashcard_32)
+    db.session.add(flashcard_33)
+    db.session.add(flashcard_34)
+    db.session.add(flashcard_35)
+    db.session.add(flashcard_36)
+    db.session.add(flashcard_37)
+    db.session.add(flashcard_38)
+    db.session.add(flashcard_39)
+    db.session.add(flashcard_40)
+    db.session.add(flashcard_41)
     db.session.commit()
 
 

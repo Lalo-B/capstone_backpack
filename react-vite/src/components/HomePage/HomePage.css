@@ -10,6 +10,7 @@
     border-radius: 10px;
     background-color: #B3E5FC;
     padding: 10px;
+
 }
 
 .tests-homepage {
@@ -18,4 +19,8 @@
     border-radius: 10px;
     background-color: #B3E5FC;
     padding: 10px;
+}
+
+.set-container-actual {
+    
 }

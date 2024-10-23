@@ -7,9 +7,27 @@ test1 = PracticeTest(
     category='micro-biology',
     name='micro biology practice test'
 )
+test2 = PracticeTest(
+    owner_id=1,
+    category='anatomy',
+    name='Human anatomy test'
+)
+test3 = PracticeTest(
+    owner_id=1,
+    category='calculus',
+    name='Ch1 Calculus test'
+)
+test4 = PracticeTest(
+    owner_id=1,
+    category='o-chem',
+    name='o-chem intro'
+)
 
 def seed_practice_tests():
     db.session.add(test1)
+    db.session.add(test2)
+    db.session.add(test3)
+    db.session.add(test4)
     db.session.commit()
 
 def undo_tests():

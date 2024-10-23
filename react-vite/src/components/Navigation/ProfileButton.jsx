@@ -45,7 +45,7 @@ function ProfileButton() {
   return (
     <>
 
-      <button onClick={toggleMenu} style={{ cursor: 'pointer' }}>
+      <button onClick={toggleMenu} className='profile-button-nav'>
         <FaUserCircle />
       </button>
       {showMenu && (
@@ -69,16 +69,20 @@ function ProfileButton() {
             </>
           ) : (
             <>
+            <div className="navbar-navlink">
               <OpenModalMenuItem
                 itemText="Log In"
                 onItemClick={closeMenu}
                 modalComponent={<LoginFormModal />}
               />
+            </div>
+            <div className="navbar-navlink">
               <OpenModalMenuItem
                 itemText="Sign Up"
                 onItemClick={closeMenu}
                 modalComponent={<SignupFormModal />}
               />
+            </div>
             </>
           )}
         </ul>
