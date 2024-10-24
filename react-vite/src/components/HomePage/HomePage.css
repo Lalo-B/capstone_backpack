@@ -47,6 +47,7 @@
     display: flex;
     flex-wrap: nowrap;
     overflow: hidden;
+    border-radius: 20px;
 }
 
 .carousel-item {
@@ -58,3 +59,8 @@
     justify-content: center;
     transition: is cubic-bezier (0.39, 8.575, 0.565, 1);
 }
+
+/* .carousel-images {
+    height: 300px;
+
+} */

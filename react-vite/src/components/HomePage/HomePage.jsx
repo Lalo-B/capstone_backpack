@@ -37,7 +37,7 @@ const HomePage = () => {
                     modalComponent={<LoginFormModal />}
                 />
             </div>
-            {/* <Carousel/> */}
+            <Carousel/>
             <div className='homepage-container'>
                 Flashcards:
                 {/* <div className='set-container-actual'> */}
