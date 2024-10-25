@@ -63,7 +63,6 @@ export const updateTestThunk = (payload, testId) => async dispatch => {
         return data
     } else {
         const errors = await res.json();
-        console.log(errors);
         return errors;
     }
 }
@@ -79,7 +78,6 @@ export const deleteTestThunk = (testId) => async dispatch => {
         return data
     } else {
         const errors = await res.json();
-        console.log(errors);
         return errors;
     }
 }
@@ -96,7 +94,6 @@ export const updateSetThunk = (payload, setId) => async dispatch => {
         return data
     } else {
         const errors = await res.json();
-        console.log(errors);
         return errors;
     }
 }
@@ -112,7 +109,6 @@ export const deleteSetThunk = (setId) => async dispatch => {
         return data
     } else {
         const errors = await res.json();
-        console.log(errors);
         return errors;
     }
 }

@@ -76,7 +76,7 @@ def create_question(test_id):
             answer1=form.data["answer1"],
             answer2=form.data["answer2"],
             answer3=form.data["answer3"],
-            answer4=form.data["answer1"],
+            answer4=form.data["answer4"],
             test_id=test_id,
             correct_answer=form.data["correct_answer"],
         )
@@ -134,7 +134,7 @@ def update_question(question_id):
         question.answer1 = form.data["answer1"]
         question.answer2 = form.data["answer2"]
         question.answer3 = form.data["answer3"]
-        question.answer4 = form.data["answer1"]
+        question.answer4 = form.data["answer4"]
         question.correct_answer = form.data["correct_answer"]
         db.session.commit()
         return question.to_dict_basic(), 200

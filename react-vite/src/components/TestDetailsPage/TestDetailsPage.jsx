@@ -46,7 +46,6 @@ const TestDetailsPage = () => {
         }
         score.finalScore = (score.correct / score.length)
         setStateScore(score)
-        console.log(score)
     };
 
     if(!questions)return <h1>Loading...</h1>

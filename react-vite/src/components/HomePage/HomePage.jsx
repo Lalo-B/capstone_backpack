@@ -42,7 +42,6 @@ const HomePage = () => {
                 Flashcards:
                 <div className='mat-containers-home'>
                     {mats && mats.sets && mats.sets.map((sett) => {
-                        // console.log(sett)
                         return (
                             <div className='flashcard-sets-homepage' onClick={() => navigate(`/flashcards/${sett.id}`)} key={`flashcards_${sett.id}`}>
                                 <div>{sett.setName}</div>

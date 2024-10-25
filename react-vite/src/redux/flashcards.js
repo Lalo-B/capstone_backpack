@@ -55,7 +55,6 @@ export const makeNewSetThunk = (payload) => async dispatch => {
         return data
     } else {
         const errors = await res.json();
-        console.log(errors);
         return errors;
     }
 }
@@ -72,7 +71,6 @@ export const makeNewCardThunk = (card, setId) => async dispatch => {
         return data
     } else {
         const errors = await res.json();
-        console.log(errors);
         return errors;
     }
 }
@@ -88,9 +86,7 @@ export const updateSingleCardThunk = (payload, id) => async dispatch => {
         dispatch(updateSingleCard(data));
         return data
     } else {
-        console.log('this is res',res)
         const errors = await res.json();
-        console.log(errors);
         return errors;
     }
 }

@@ -5,7 +5,6 @@ import { SubmitContext } from '../../context/SubmitContext';
 import { useNavigate } from "react-router-dom";
 
 const OneQuestionForm = ({ testId }) => {
-    // console.log('this is test id in the child component', testId)
     const { isSubmit } = useContext(SubmitContext);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -19,8 +18,6 @@ const OneQuestionForm = ({ testId }) => {
     const [errors, setErrors] = useState({});
 
     const extraFunct = async () => {
-        // const value = await dispatch(questionActions.makeNewQuestionThunk(newQ, testId))
-        // return value
         const res = await dispatch(questionActions.makeNewQuestionThunk(newQ, testId))
         if (!res.errors) {
             navigate(`/tests/${res.testId}`)
@@ -31,7 +28,6 @@ const OneQuestionForm = ({ testId }) => {
                 errObj[res.errors[er]] = `there was a problem with ${res.errors[er]}`;
             }
             setErrors(errObj)
-            console.log(errors)
         }
     }
     useEffect(() => {

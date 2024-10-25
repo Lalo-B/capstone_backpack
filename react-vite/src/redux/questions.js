@@ -60,21 +60,17 @@ export const makeNewPracticeTestThunk = (payload) => async dispatch => {
 }
 
 export const makeNewQuestionThunk = (newQ,testId) => async dispatch => {
-    // console.log('new q untouched',newQ)
-    // console.log('new q after json stringify',JSON.stringify(newQ))
     const res = await fetch(`/api/practice-tests/new/${testId}`,{
         method: "POST",
         body: JSON.stringify(newQ),
         headers: {'Content-Type': 'application/json'}
     })
     if(res.ok){
-        console.log('this means res is ok')
         const data = await res.json();
         dispatch(makeNewQuestion(data))
         return data
     } else {
         const errors = await res.json();
-        console.log('this is errors', errors)
         return errors;
     }
 }
@@ -91,7 +87,6 @@ export const updateQuestionThunk = (payload, id) => async dispatch => {
         return data;
     } else {
         const errors = await res.json();
-        console.log('this is errors', errors)
         return errors;
     }
 }
