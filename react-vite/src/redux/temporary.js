@@ -16,7 +16,6 @@ const sendMessage = payload => {
 }
 
 export const addImageThunk = (post) => async (dispatch) => {
-    // console.log('are we here')
     const response = await fetch(`/api/images`, {
         method: "POST",
         //   headers: {
@@ -30,22 +29,20 @@ export const addImageThunk = (post) => async (dispatch) => {
         const { resPost } = await response.json();
         dispatch(addImage(resPost));
     } else {
-        const error = await response.json()
-        console.log(error)
-        console.log("There was an error making your post!")
+        const error = await response.json();
+        return error;
     }
 }
 
-export const sendMessageThunk = (message) => async dispatch => {
+export const sendMessageThunk = () => async dispatch => {
     const res = await fetch(`/api/sockets`);
     if(res.ok){
         const data = await res.json();
         dispatch(sendMessage(data));
         return data;
     } else {
-        const error = await response.json()
-        console.log(error)
-        console.log("There was an error sending a message!")
+        const error = await res.json()
+        return error;
     }
 }
 

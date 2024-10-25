@@ -6,13 +6,10 @@ let socket;
 
 
 const Sockets = () => {
-    // socket = io();
 
     const [chat, setChat] = useState('');
     const [messages, setMessages] = useState([]);
     const user = useSelector(state => state.session.user);
-    // console.log(user)
-
 
     useEffect(() => {
         // create websocket/connect

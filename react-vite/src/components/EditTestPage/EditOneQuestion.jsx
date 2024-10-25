@@ -5,7 +5,6 @@ import { SubmitContext } from '../../context/SubmitContext';
 import { useNavigate } from "react-router-dom";
 
 const EditOneQuestion = ({entireQ, testId}) => {
-    // console.log(entireQ.correctAnswer)
     const { isSubmit } = useContext(SubmitContext);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -19,8 +18,6 @@ const EditOneQuestion = ({entireQ, testId}) => {
     const [errors, setErrors] = useState({});
 
     const helperF = async () => {
-        // const val = await dispatch(questionActions.updateQuestionThunk(curQ,entireQ.id))
-        // console.log(val)
         const res = await dispatch(questionActions.updateQuestionThunk(curQ,entireQ.id))
         if (res.errors && Object.values(res.errors).length > 0) {
             let errObj = {};
@@ -28,7 +25,6 @@ const EditOneQuestion = ({entireQ, testId}) => {
                 errObj[res.errors[er]] = `there was a problem with ${res.errors[er]}`;
             }
             setErrors(errObj)
-            console.log(errors)
         }
         if(!res.errors){
             navigate(`/tests/${testId}`)

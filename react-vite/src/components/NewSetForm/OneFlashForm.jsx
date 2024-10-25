@@ -15,8 +15,6 @@ const OneFlashForm = ({ setId }) => {
 
     const helperF = async () => {
         const temp = await dispatch(setActions.makeNewCardThunk(newCard, setId))
-        // console.log(res)
-        //if res success thenits the flash card if error its errors =[]
         if (!temp.errors) {
             navigate(`/flashcards/${temp.setId}`)
         }
@@ -27,7 +25,6 @@ const OneFlashForm = ({ setId }) => {
                 errObj[temp.errors[er]] = `there was a problem with ${temp.errors[er]}`;
             }
             setCardErrors(errObj)
-            // console.log('errors in flash card', cardErrors)
         }
     }
 

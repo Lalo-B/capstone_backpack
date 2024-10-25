@@ -43,7 +43,6 @@ const FlashcardSet = () => {
         if (curIndex < flashcards[id].length - 1 && val === 'up') {
             setCurIndex(curIndex + 1)
         }
-        // console.log(curIndex)
     }
     if (!flashcards) return <h1>loading ...</h1>
 

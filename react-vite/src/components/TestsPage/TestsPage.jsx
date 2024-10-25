@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const TestsPage = () => {
     const tests = useSelector(state => state.mats.tests);
     const { isSubmit, setIsSubmit } = useContext(SubmitContext);
+    const users = useSelector(state => state.session.users)
     // const questions = useSelector(state => state.questions.byId);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const TestsPage = () => {
                         <div key={test.id} className='one-test-browse' onClick={()=>navigate(`/tests/${test.id}`)}>
                             <div>{test.name}</div>
                             <div>Category: {test.category}</div>
-                            <div>Created By: {test.ownerId}</div>
+                            <div>Author: {users?.find((user) => user.id === test.ownerId).username}</div>
                         </div>
                     )
                 })}
