@@ -14,6 +14,7 @@ const FlashcardsPage = () => {
     const { isSubmit, setIsSubmit } = useContext(SubmitContext);
     const sets = useSelector(state => state.mats.sets);
     const flashcards = useSelector(state => state.flashcards.byId)
+    const users = useSelector(state=> state.session.users)
 
 
     useEffect(() => {
@@ -24,7 +25,7 @@ const FlashcardsPage = () => {
     }, [dispatch]);
 
     return (
-        <div style={{margin: 'auto', maxWidth: '500px'}}>
+        <div className='the-biggest-browse-box'>
             <h1>Browse Flashcard Sets</h1>
             <div className='browse-sets-container'>
                 {sets && sets.map((sett) => {
@@ -32,7 +33,7 @@ const FlashcardsPage = () => {
                         <div key={sett.id} className='one-set-in-browse' onClick={()=>navigate(`/flashcards/${sett.id}`)}>
                             <div>{sett.setName}</div>
                             <div>Category: {sett.category}</div>
-                            <div>Created By: {sett.userId}</div>
+                            <div>Author: {users?.find((user) => user.id === sett.userId).username}</div>
                         </div>
                     )
                 })}

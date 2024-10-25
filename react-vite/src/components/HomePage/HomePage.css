@@ -1,3 +1,8 @@
+.home-page-main-container {
+    margin: auto;
+    max-width: 500px;
+}
+
 .home-page-header {
     margin: 20px auto 20px;
     text-align: center;
@@ -11,7 +16,14 @@
     width: 25%;
     min-width: 50px;
 }
-.homepage-container{
+
+.homepage-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mat-containers-home {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -43,7 +55,7 @@
 }
 
 .carousel-container {
-    background: #f1f1f1;
+    background: white;
     display: flex;
     flex-wrap: nowrap;
     overflow: hidden;
@@ -57,7 +69,40 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: is cubic-bezier (0.39, 8.575, 0.565, 1);
+    transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+.individual-image-lalo {
+    object-fit: contain;
+    cursor: pointer;
+}
+
+@media (min-width: 1000px) {
+    .home-page-main-container {
+        max-width: 1000px;
+    }
+
+    .carousel-container {
+        margin: auto;
+        max-width: 500px;
+    }
+
+    .mat-containers-home {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+        max-height: 144px;
+        overflow: auto;
+    }
+
+    .flashcard-sets-homepage {
+        width: 47%;
+    }
+
+    .tests-homepage {
+        width: 47%;
+    }
 }
 
 /* .carousel-images {

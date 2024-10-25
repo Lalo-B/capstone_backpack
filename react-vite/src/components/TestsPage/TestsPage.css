@@ -1,4 +1,7 @@
-
+.the-biggest-test-container {
+    margin: auto;
+    max-width: 500px;
+}
 .browse-tests-container{
     display: flex;
     flex-direction: column;
@@ -16,4 +19,25 @@
 
 .one-test-browse:hover {
     transform: scale(1.01);
+}
+
+@media (min-width: 1000px) {
+    .the-biggest-test-container {
+        max-width: 1000px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .browse-tests-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+    }
+
+    .one-test-browse {
+        width: 47%;
+    }
 }

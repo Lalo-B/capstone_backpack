@@ -5,25 +5,27 @@ import { useModal } from '../../context/Modal';
 
 
 
-const DeleteModal = ({setId,testId}) => {
-    const {closeModal} = useModal();
+const DeleteModal = ({ setId, testId }) => {
+    const { closeModal } = useModal();
     const dispatch = useDispatch();
 
     const handleClick = () => {
-        if(testId){
+        if (testId) {
             dispatch(matActions.deleteTestThunk(testId))
         }
-        if(setId){
+        if (setId) {
             dispatch(matActions.deleteSetThunk(setId))
         }
         closeModal()
     }
     return (
         <div className='delete-modal-div'>
-            <h1>delete modal</h1>
-            <p>are you sure you want to delete your study material?</p>
-            <button onClick={handleClick}>Yes (delete material)</button>
-            <button>No (keep material)</button>
+            <h1>Delete a study material</h1>
+            <p>Are you sure you want to delete your study material?</p>
+            <div className='button-box-modal'>
+                <button onClick={handleClick}>Yes (delete material)</button>
+                <button>No (keep material)</button>
+            </div>
         </div>
     )
 }

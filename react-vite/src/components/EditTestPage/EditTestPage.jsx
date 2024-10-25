@@ -60,7 +60,7 @@ const EditTestPage = () => {
     }
 
     return (
-        <div style={{margin: 'auto', maxWidth: '500px'}}>
+        <div className='big-box-new-test-form'>
             <h1>edit test {id} page</h1>
             <form className='update-test-form-container' onSubmit={onSubmit}>
                 <label>Set test name:
