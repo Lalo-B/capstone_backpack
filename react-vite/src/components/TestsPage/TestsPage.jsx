@@ -22,7 +22,7 @@ const TestsPage = () => {
     }, [dispatch])
 
     return (
-        <div style={{margin: 'auto', maxWidth: '500px'}}>
+        <div className='the-biggest-test-container'>
             <h1>Browse Practice Tests</h1>
             <div className='browse-tests-container'>
                 {tests && tests.map((test) => {

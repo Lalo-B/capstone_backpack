@@ -22,11 +22,11 @@ const HomePage = () => {
     }, [dispatch])
 
     return (
-        <div style={{ margin: 'auto', maxWidth: '500px' }}>
+        <div className='home-page-main-container'>
             <h1 className='home-page-header'>Welcome to Backpack</h1>
             <p style={{ textAlign: 'center' }}> Take the time to learn
                 something new, using flashcards or practice tests from
-                a wide selection of different topics.</p>
+                a selection of different topics.</p>
             <div className='button-holder'>
                 <OpenModalButton
                     buttonText='sign up'
@@ -37,31 +37,33 @@ const HomePage = () => {
                     modalComponent={<LoginFormModal />}
                 />
             </div>
-            <Carousel/>
+            <Carousel />
             <div className='homepage-container'>
                 Flashcards:
-                {/* <div className='set-container-actual'> */}
-                {mats && mats.sets && mats.sets.map((sett) => {
-                    // console.log(sett)
-                    return (
-                        <div className='flashcard-sets-homepage' onClick={() => navigate(`/flashcards/${sett.id}`)} key={`flashcards_${sett.id}`}>
-                            <div>{sett.setName}</div>
-                            {/* <div>set category: {sett.category}</div> */}
-                            <div>Author: {users?.find((user) => user.id === sett.userId).username}</div>
-                        </div>
-                    )
-                })}
-                {/* </div> */}
+                <div className='mat-containers-home'>
+                    {mats && mats.sets && mats.sets.map((sett) => {
+                        // console.log(sett)
+                        return (
+                            <div className='flashcard-sets-homepage' onClick={() => navigate(`/flashcards/${sett.id}`)} key={`flashcards_${sett.id}`}>
+                                <div>{sett.setName}</div>
+                                {/* <div>set category: {sett.category}</div> */}
+                                <div>Author: {users?.find((user) => user.id === sett.userId).username}</div>
+                            </div>
+                        )
+                    })}
+                </div>
                 Tests:
-                {mats && mats.tests && mats.tests.map((test) => {
-                    return (
-                        <div className='tests-homepage' onClick={() => navigate(`/tests/${test.id}`)} key={`test_${test.id}`}>
-                            <div>{test.name}</div>
-                            {/* <div>test category: {test.category}</div> */}
-                            <div>Author: {users?.find((user) => user.id === test.ownerId).username}</div>
-                        </div>
-                    )
-                })}
+                <div className='mat-containers-home'>
+                    {mats && mats.tests && mats.tests.map((test) => {
+                        return (
+                            <div className='tests-homepage' onClick={() => navigate(`/tests/${test.id}`)} key={`test_${test.id}`}>
+                                <div>{test.name}</div>
+                                {/* <div>test category: {test.category}</div> */}
+                                <div>Author: {users?.find((user) => user.id === test.ownerId).username}</div>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         </div>
     )

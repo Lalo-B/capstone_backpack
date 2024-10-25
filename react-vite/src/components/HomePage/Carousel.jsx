@@ -3,9 +3,10 @@ import "./HomePage.css";
 import '/flashcards.png';
 import '/tests.png';
 import '/signup.png';
+import '/lalocard.png';
 
 const Carousel = () => {
-    const data = ["1", "2", "3"];
+    const data = ["1", "2", "3","4"];
     const [currentIndex, setCurrentIndex] = useState(0)
     const carouselInfiniteScroll = () => {
         if (currentIndex === data.length - 1) {
@@ -19,6 +20,11 @@ const Carousel = () => {
         return () => clearInterval(interval)
     })
 
+    const email = (e) => {
+        e.preventDefault
+        window.location='mailto:g830bo@gmail.com';
+    }
+
     return (
         <div className='carousel-container'>
             {/* {data.map((item, index) => {
@@ -29,6 +35,7 @@ const Carousel = () => {
             <img src='./flashcards.png' className="carousel-images carousel-item" style={{ transform: `translate(-${currentIndex * 100}%)` }}/>
             <img src='./tests.png' className="carousel-images carousel-item" style={{ transform: `translate(-${currentIndex * 100}%)` }}/>
             <img src='./signup.png' className="carousel-images carousel-item" style={{ transform: `translate(-${currentIndex * 100}%)` }}/>
+            <img src='./lalocard.png' onClick={email} className="carousel-images carousel-item individual-image-lalo" style={{ transform: `translate(-${currentIndex * 100}%)` }}/>
         </div>
     )
 }

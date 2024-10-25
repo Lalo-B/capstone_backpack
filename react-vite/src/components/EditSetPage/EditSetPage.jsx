@@ -66,7 +66,7 @@ const EditSetPage = () => {
     }
 
     return (
-        <div style={{margin: 'auto', maxWidth: '500px'}}>
+        <div className='big-box-new-set-form'>
             <h1>edit set {id} page</h1>
             <form onSubmit={onSubmit} style={{display:'flex', flexDirection: 'column', gap: '10px'}}>
                 <div className='edit-set-info-container'>

@@ -37,46 +37,54 @@ const BackpackPage = () => {
     }, [user, sets, tests])
 
     return (
-        <div style={{margin: 'auto', maxWidth: '500px'}}>
+        <div className='the-big-box-in-backpack'>
             <h1>Your Backpack</h1>
             <p>Here you can manage the materials you've created</p>
             <div className='study-mats-container'>
                 sets:
-                {userSets && userSets.map((sett) => {
-                    return (
-                        <>
-                            <div key={`${sett.id},set`} className='each-set-backpack' onClick={() => navigate(`/flashcards/${sett.id}`)}>
-                                <div>{sett.setName}</div>
-                                <div>Category: {sett.category}</div>
-                                {/* <div>Created By: {sett.userId}</div> */}
+                <div className='mat-containers-backpack'>
+                    {userSets && userSets.map((sett) => {
+                        return (
+                            <div className='total-box-mats'>
+                                <div key={`${sett.id},set`} className='each-set-backpack' onClick={() => navigate(`/flashcards/${sett.id}`)}>
+                                    <div>{sett.setName}</div>
+                                    <div>Category: {sett.category}</div>
+                                    {/* <div>Created By: {sett.userId}</div> */}
+                                </div>
+                                <div className='the-button-box'>
+                                    <button onClick={() => navigate(`/flashcards/edit/${sett.id}`)}>edit</button>
+                                    <OpenModalButton
+                                        modalComponent={<DeleteModal setId={sett.id} />}
+                                        buttonText='delete'
+                                    />
+                                </div>
                             </div>
-                            <button onClick={() => navigate(`/flashcards/edit/${sett.id}`)}>edit</button>
-                            <OpenModalButton
-                                modalComponent={<DeleteModal setId={sett.id}/>}
-                                buttonText='delete'
-                            />
-                        </>
-                    )
-                })}
+                        )
+                    })}
+                </div>
             </div>
             <div className='study-mats-container'>
                 tests:
-                {userTests && userTests.map((test) => {
-                    return (
-                        <>
-                            <div key={`${test.id},test`} className='each-test-backpack' onClick={() => navigate(`/tests/${test.id}`)}>
-                                <div>{test.name}</div>
-                                <div>Category: {test.category}</div>
-                                {/* <div>Created By: {test.ownerId}</div> */}
+                <div className='mat-containers-backpack'>
+                    {userTests && userTests.map((test) => {
+                        return (
+                            <div className='total-box-mats'>
+                                <div key={`${test.id},test`} className='each-test-backpack' onClick={() => navigate(`/tests/${test.id}`)}>
+                                    <div>{test.name}</div>
+                                    <div>Category: {test.category}</div>
+                                    {/* <div>Created By: {test.ownerId}</div> */}
+                                </div>
+                                <div className='the-button-box'>
+                                    <button onClick={() => navigate(`/tests/edit/${test.id}`)}>edit</button>
+                                    <OpenModalButton
+                                        modalComponent={<DeleteModal testId={test.id} />}
+                                        buttonText='delete'
+                                    />
+                                </div>
                             </div>
-                            <button onClick={() => navigate(`/tests/edit/${test.id}`)}>edit</button>
-                            <OpenModalButton
-                                modalComponent={<DeleteModal testId={test.id}/>}
-                                buttonText='delete'
-                            />
-                        </>
-                    )
-                })}
+                        )
+                    })}
+                </div>
             </div>
         </div>
     )
