@@ -5,6 +5,7 @@ import { useEffect, useContext, useState } from 'react';
 import { SubmitContext } from "../../context/SubmitContext";
 import * as flashcardActions from '../../redux/flashcards';
 import * as matsActions from '../../redux/studyMats';
+import * as imageActions from '../../redux/images';
 import OneCard from '../FlashcardsPage/OneCard';
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
@@ -13,6 +14,7 @@ const FlashcardSet = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const flashcards = useSelector(state => state.flashcards.bySetId)
+    const images = useSelector(state => state.images.setImages)
     const { isSubmit, setIsSubmit } = useContext(SubmitContext);
     const [curIndex, setCurIndex] = useState(0);
     const sets = useSelector(state=>state.mats.sets)
@@ -20,6 +22,7 @@ const FlashcardSet = () => {
     useEffect(() => {
         dispatch(matsActions.getAllMatsThunk())
         dispatch(flashcardActions.getAllFlashcardsThunk())
+        dispatch(imageActions.getAllSetImagesThunk())
         setIsSubmit(false);
     }, [dispatch, id]);
 
@@ -55,7 +58,7 @@ const FlashcardSet = () => {
                         <OneCard key={card.id} card={card} />
                     )
                 })} */}
-                {flashcards && flashcards[id] && <OneCard key={flashcards[id][curIndex].id} card={flashcards[id][curIndex]} />}
+                {flashcards && flashcards[id] && <OneCard key={flashcards[id][curIndex].id} card={flashcards[id][curIndex]} image={images?.find(el=>el.cardId === flashcards[id][curIndex].id)} />}
                 <div className='arrow-box'>
                     <FaArrowLeft className='arrow-in-sets' onClick={() => cycleFuntion('down')} />
                         <p style={{userSelect: 'none'}}>{curIndex+1}/{flashcards[id] && flashcards[id].length ? flashcards[id].length : ''}</p>

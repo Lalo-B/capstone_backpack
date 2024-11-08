@@ -64,6 +64,20 @@
     transition: transform 0.5s;
 }
 
+.image-is-front {
+    transform: rotateX(0rad);
+    transition: transform 0.5s;
+}
+
+.hide-me {
+    display: none;
+}
+.card-image {
+    height: 100px;
+    padding-bottom: 20px;
+
+}
+
 @media (min-width: 1000px) {
     .the-biggest-browse-box {
         max-width: 1000px;

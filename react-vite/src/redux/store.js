@@ -6,7 +6,7 @@ import {
 } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
-import temporaryReducer from './temporary';
+import imagesReducer from './images';
 import studyMatsReducer from "./studyMats";
 import flashcardsReducer from "./flashcards";
 import questionsReducer from "./questions";
@@ -14,7 +14,7 @@ import questionsReducer from "./questions";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  temporary: temporaryReducer,
+  images: imagesReducer,
   mats: studyMatsReducer,
   flashcards: flashcardsReducer,
   questions: questionsReducer

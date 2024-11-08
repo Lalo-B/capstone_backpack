@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import * as setActions from '../../redux/flashcards';
 import { SubmitContext } from '../../context/SubmitContext';
 
+
 const NewSetForm = () => {
     const dispatch = useDispatch();
     const [name, setName] = useState('');
@@ -19,7 +20,7 @@ const NewSetForm = () => {
     const innerFunct = async (newSet) => {
         const temp = await dispatch(setActions.makeNewSetThunk(newSet))
         setCreatedSet(temp)
-        if(Object.values(temp.errors).length > 0){
+        if(temp.errors && Object.values(temp.errors).length > 0){
             let errObj = {};
             for(let er in temp.errors){
                 errObj[temp.errors[er]] = `there was a problem with ${temp.errors[er]}`;

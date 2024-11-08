@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import * as questionActions from '../../redux/questions';
 import { SubmitContext } from '../../context/SubmitContext';
 import { useNavigate } from "react-router-dom";
+import ImageForm from "../ImageForm/ImageForm";
 
 const OneQuestionForm = ({ testId }) => {
     const { isSubmit } = useContext(SubmitContext);
@@ -16,12 +17,13 @@ const OneQuestionForm = ({ testId }) => {
     const [correctAnswer, setCorrectAnswer] = useState('');
     const [newQ, setNewQ] = useState({});
     const [errors, setErrors] = useState({});
+    const [questionId, setQuestionId] = useState();
 
     const extraFunct = async () => {
         const res = await dispatch(questionActions.makeNewQuestionThunk(newQ, testId))
-        if (!res.errors) {
-            navigate(`/tests/${res.testId}`)
-        }
+        // if (!res.errors) {
+        //     navigate(`/tests/${res.testId}`)
+        // }
         if (res.errors) {
             let errObj = {};
             for (let er in res.errors) {
@@ -29,6 +31,7 @@ const OneQuestionForm = ({ testId }) => {
             }
             setErrors(errObj)
         }
+        setQuestionId(res.id)
     }
     useEffect(() => {
         if (isSubmit && testId) {
@@ -110,6 +113,7 @@ const OneQuestionForm = ({ testId }) => {
                 </select>
             </label>
             {errors.correct_answer && <p>please select a value for the correct answer</p>}
+            <ImageForm questionId={questionId} testId={testId}/>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './TestDetailsPage.css';
 
-const OneQuestion = ({ q, score }) => {
+const OneQuestion = ({ q, score, image }) => {
     const [color, setColor] = useState('');
 
     useEffect(()=>{
@@ -20,6 +20,7 @@ const OneQuestion = ({ q, score }) => {
 
     return (
         <div className={`one-question`}>
+            <img src={image && image.url} className='question-image' />
             <p className='one-question-actual-question'>{q.question}</p>
             <label className={`${score && score[q.id].answer === 'answer1' ? color : ''}`}>
                 <input type='radio' value='answer1' name={q.id} />

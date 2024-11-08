@@ -18,6 +18,13 @@
     font-size: large;
 }
 
+.question-image {
+    object-fit: cover;
+    height: 150px;
+    width: 150px;
+    margin: auto;
+}
+
 .green {
     color: green;
 }
