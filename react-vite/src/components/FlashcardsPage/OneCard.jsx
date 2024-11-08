@@ -27,7 +27,7 @@ const OneCard = ({ card, image }) => {
 
     return (
         <div className={`one-card ${isFront}`} onClick={rotate}>
-            {isFront !== 'front' ? null : <img className={`${isFront} card-image`} src={image.url} />}
+            {isFront !== 'front' ? null : <img className={`${isFront} card-image`} src={image?.url} />}
             {/* quizlet has it already on the propper side of the card */}
 
             <div style={{userSelect: 'none'}} className={`${isFront}`}>{cardContent}</div>
