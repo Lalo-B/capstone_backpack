@@ -3,7 +3,7 @@ import "./HomePage.css";
 import '/flashcards.png';
 import '/tests.png';
 import '/signup.png';
-import '/lalocard.png';
+import '/lalocard2.png';
 
 const Carousel = () => {
     const data = ["1", "2", "3","4"];
