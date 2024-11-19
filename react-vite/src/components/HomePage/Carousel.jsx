@@ -22,7 +22,7 @@ const Carousel = () => {
 
     const email = (e) => {
         e.preventDefault
-        window.location='mailto:g830bo@gmail.com';
+        window.location='mailto:gerardobonillajr.dev@gmail.com';
     }
 
     return (
@@ -35,7 +35,7 @@ const Carousel = () => {
             <img src='./flashcards.png' className="carousel-images carousel-item" style={{ transform: `translate(-${currentIndex * 100}%)` }}/>
             <img src='./tests.png' className="carousel-images carousel-item" style={{ transform: `translate(-${currentIndex * 100}%)` }}/>
             <img src='./signup.png' className="carousel-images carousel-item" style={{ transform: `translate(-${currentIndex * 100}%)` }}/>
-            <img src='./lalocard.png' onClick={email} className="carousel-images carousel-item individual-image-lalo" style={{ transform: `translate(-${currentIndex * 100}%)` }}/>
+            <img src='./lalocard2.png' onClick={email} className="carousel-images carousel-item individual-image-lalo" style={{ transform: `translate(-${currentIndex * 100}%)` }}/>
         </div>
     )
 }
