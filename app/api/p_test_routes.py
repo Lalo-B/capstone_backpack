@@ -49,6 +49,7 @@ def create_test():
         new_test = PracticeTest(
             category=form.data["category"],
             owner_id=current_user.id,
+            owner_name=current_user.username,
             name=form.data['name']
         )
         db.session.add(new_test)

@@ -46,6 +46,7 @@ from .flash_cards import (
 
 set1 = FlashCardSet(
     owner_id=1,
+    owner_name='Demo',
     set_name="microbio",
     category="micro-biology",
     flash_cards=[
@@ -74,6 +75,7 @@ set1 = FlashCardSet(
 )
 set2 = FlashCardSet(
     owner_id=1,
+    owner_name='Demo',
     set_name="anatomy",
     category="anatomy",
     flash_cards=[
@@ -93,6 +95,7 @@ set2 = FlashCardSet(
 
 set3 = FlashCardSet(
     owner_id=1,
+    owner_name='Demo',
     set_name="basic physics flashcards",
     category="physics",
     flash_cards=[

@@ -4,21 +4,25 @@ from app.models import SCHEMA, db, environment, PracticeTest
 
 test1 = PracticeTest(
     owner_id=1,
+    owner_name='Demo',
     category='micro-biology',
     name='micro biology practice test'
 )
 test2 = PracticeTest(
     owner_id=1,
+    owner_name='Demo',
     category='anatomy',
     name='Human anatomy test'
 )
 test3 = PracticeTest(
     owner_id=1,
+    owner_name='Demo',
     category='calculus',
     name='Ch1 Calculus test'
 )
 test4 = PracticeTest(
     owner_id=1,
+    owner_name='Demo',
     category='o-chem',
     name='o-chem intro'
 )

@@ -9,7 +9,7 @@ flashcard_routes = Blueprint('flashcards', __name__)
 @flashcard_routes.route('/basic')
 def get_all_flashcard_sets():
     '''
-    get all flash card sets
+    get all flash card sets using to_dict_basic()
     '''
     all_sets = FlashCardSet.query.all()
     if not all_sets:
@@ -20,7 +20,7 @@ def get_all_flashcard_sets():
 @flashcard_routes.route('/all')
 def get_all_flashcards_and_sets():
     '''
-    get all flash cards and sets
+    get all flash cards and sets using to_dict()
     '''
     all_sets = FlashCardSet.query.all()
     if not all_sets:
@@ -47,6 +47,7 @@ def create_flashcard_set():
     if set_form.validate_on_submit():
         new_set = FlashCardSet(
             owner_id = current_user.id,
+            owner_name = current_user.username,
             set_name = set_form.data['set_name'],
             category = set_form.data['category']
         )

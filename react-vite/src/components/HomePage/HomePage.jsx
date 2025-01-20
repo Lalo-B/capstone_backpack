@@ -13,12 +13,12 @@ const HomePage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const mats = useSelector(state => state.mats);
-    const flashcards = useSelector(state => state.flashcards);
-    const users = useSelector(state => state.session.users);
+    const currUser = useSelector(state => state.session.user);
+    console.log(currUser)
+    // also check curr user so we can move the login buttons
 
     useEffect(() => {
         dispatch(matsActions.getAllMatsThunk())
-        dispatch(sessionActions.getAllUsersThunk())
     }, [dispatch])
 
     return (
@@ -27,16 +27,18 @@ const HomePage = () => {
             <p style={{ textAlign: 'center' }}> Take the time to learn
                 something new, using flashcards or practice tests from
                 a selection of different topics.</p>
-            <div className='button-holder'>
-                <OpenModalButton
-                    buttonText='sign up'
-                    modalComponent={<SignupFormModal />}
-                />
-                <OpenModalButton
-                    buttonText='login'
-                    modalComponent={<LoginFormModal />}
-                />
-            </div>
+            {!currUser &&
+                <div className='button-holder'>
+                    <OpenModalButton
+                        buttonText='sign up'
+                        modalComponent={<SignupFormModal />}
+                    />
+                    <OpenModalButton
+                        buttonText='login'
+                        modalComponent={<LoginFormModal />}
+                    />
+                </div>
+            }
             <Carousel />
             <div className='homepage-container'>
                 Flashcards:
@@ -45,8 +47,7 @@ const HomePage = () => {
                         return (
                             <div className='flashcard-sets-homepage' onClick={() => navigate(`/flashcards/${sett.id}`)} key={`flashcards_${sett.id}`}>
                                 <div>{sett.setName}</div>
-                                {/* <div>set category: {sett.category}</div> */}
-                                <div>Author: {users?.find((user) => user.id === sett.userId).username}</div>
+                                <div>Author: {sett.ownerName}</div>
                             </div>
                         )
                     })}
@@ -57,8 +58,7 @@ const HomePage = () => {
                         return (
                             <div className='tests-homepage' onClick={() => navigate(`/tests/${test.id}`)} key={`test_${test.id}`}>
                                 <div>{test.name}</div>
-                                {/* <div>test category: {test.category}</div> */}
-                                <div>Author: {users?.find((user) => user.id === test.ownerId).username}</div>
+                                <div>Author: {test.ownerName}</div>
                             </div>
                         )
                     })}

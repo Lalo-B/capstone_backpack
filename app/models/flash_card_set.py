@@ -9,6 +9,7 @@ class FlashCardSet(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    owner_name = db.Column(db.String(50), nullable=False)
     set_name = db.Column(db.String(100), nullable=False)
     category = db.Column(db.String(100), nullable=False)
 
@@ -24,7 +25,8 @@ class FlashCardSet(db.Model):
     def to_dict_basic(self):
         return {
             'id': self.id,
-            'userId': self.owner_id,
+            'ownerId': self.owner_id,
+            'ownerName': self.owner_name,
             'setName': self.set_name,
             'category': self.category
         }

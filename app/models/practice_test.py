@@ -11,6 +11,7 @@ class PracticeTest(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    owner_name = db.Column(db.String(50), nullable=False)
     name = db.Column(db.String(200), nullable=False)
     category = db.Column(db.Integer, nullable=False)
 
@@ -27,6 +28,7 @@ class PracticeTest(db.Model):
         return {
             "id": self.id,
             "ownerId": self.owner_id,
+            "ownerName": self.owner_name,
             "category": self.category,
             "name":self.name
         }
