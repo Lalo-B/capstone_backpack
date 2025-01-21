@@ -3,19 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import './HomePage.css';
 import { useEffect } from 'react';
 import * as matsActions from '../../redux/studyMats';
-import * as sessionActions from '../../redux/session';
+// import * as sessionActions from '../../redux/session';
 import OpenModalButton from '../OpenModalButton/OpenModalButton';
 import SignupFormModal from '../SignupFormModal';
 import LoginFormModal from '../LoginFormModal';
-import Carousel from './Carousel';
+// import Carousel from './Carousel';
+import HPCards from './HPCards';
 
 const HomePage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const mats = useSelector(state => state.mats);
     const currUser = useSelector(state => state.session.user);
-    console.log(currUser)
-    // also check curr user so we can move the login buttons
 
     useEffect(() => {
         dispatch(matsActions.getAllMatsThunk())
@@ -39,7 +38,8 @@ const HomePage = () => {
                     />
                 </div>
             }
-            <Carousel />
+            {/* <Carousel /> */}
+            <HPCards/>
             <div className='homepage-container'>
                 Flashcards:
                 <div className='mat-containers-home'>
