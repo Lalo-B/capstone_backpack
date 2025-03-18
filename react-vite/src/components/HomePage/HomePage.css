@@ -21,6 +21,7 @@
 .homepage-container {
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
     gap: 10px;
 }
 
@@ -49,21 +50,22 @@
 
 .flashcard-sets-homepage:hover {
     transform: scale(1.01);
+    /* transform: translateY(3px); */
 }
 
 .tests-homepage:hover {
     transform: scale(1.01);
 }
 
-.carousel-container {
+/* .carousel-container {
     background: white;
     display: flex;
     flex-wrap: nowrap;
     overflow: hidden;
     border-radius: 20px;
-}
+} */
 
-.carousel-item {
+/* .carousel-item {
     height: 20rem;
     min-width: 100%;
     width: 100%;
@@ -71,7 +73,7 @@
     align-items: center;
     justify-content: center;
     transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1);
-}
+} */
 
 .individual-image-lalo {
     object-fit: contain;
@@ -91,42 +93,92 @@
     .mat-containers-home {
         display: flex;
         flex-direction: row;
+        /* align-items: center; */
         flex-wrap: wrap;
         gap: 10px;
         max-height: 144px;
-        overflow: auto;
+        /* overflow: auto; */
     }
 
     .flashcard-sets-homepage {
-        width: 47%;
+        width: 45%;
     }
 
     .tests-homepage {
-        width: 47%;
+        width: 45%;
     }
 }
-
+/*
 .hp-cards-container {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.hp-cards-carousel {
     display: flex;
-    gap: 10px;
+    transition: transform 0.5s ease-in-out;
+    margin: 15px;
+    gap: 20px;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
+.carousel-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-arrow:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .hp-card {
-    height: 390px;
-    width: 300px;
-    /* border: 1px solid red; */
+    min-width: 300px;
     border-radius: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
     background-color: cadetblue;
     overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex-shrink: 0;
 }
 
-/* .hp-card > p {
+.hp-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
 
-} */
+.hp-card>p {
+    text-align: center;
+}
 
 .hp-card-imgs {
     width: 310px;
@@ -135,7 +187,49 @@
     left: 60px;
 }
 
-/* .carousel-images {
-    height: 300px;
+@media (max-width: 500px) {
+    /* hello
+}
+*/
 
-} */
+.scroll{
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent)
+}
+
+.scroll div {
+    white-space: nowrap;
+    animation: scroll 70s linear infinite;
+}
+
+.scroll div:nth-child(2){
+    animation: scroll2 70s linear infinite;
+    animation-delay: -35s;
+}
+
+@keyframes scroll {
+    0%{
+        transform: translateX(100%)
+    }
+    100%{
+        transform: translateX(-100%)
+    }
+}
+
+@keyframes scroll2 {
+    0%{
+        transform: translateX(0)
+    }
+    100%{
+        transform: translateX(-200%)
+    }
+}
+
+.scroll div img{
+    padding: 5px 10px;
+    height: 16rem;
+    width: 600px;
+    border-radius: 30px;
+}

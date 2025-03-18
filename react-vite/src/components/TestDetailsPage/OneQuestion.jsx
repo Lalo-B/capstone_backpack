@@ -20,21 +20,21 @@ const OneQuestion = ({ q, score, image }) => {
 
     return (
         <div className={`one-question`}>
-            <img src={image && image.url} className='question-image' />
+            {image ? <img src={image && image.url} className='question-image' /> : null}
             <p className='one-question-actual-question'>{q.question}</p>
-            <label className={`${score && score[q.id].answer === 'answer1' ? color : ''}`}>
+            <label className={`${score && score[q.id].answer === 'answer1' ? color : ''} answers-style`}>
                 <input type='radio' value='answer1' name={q.id} />
                 {q.answer1}
             </label>
-            <label className={`${score && score[q.id].answer === 'answer2' ? color : ''}`}>
+            <label className={`${score && score[q.id].answer === 'answer2' ? color : ''} answers-style`}>
                 <input type='radio' value='answer2' name={q.id} />
                 {q.answer2}
             </label>
-            <label className={`${score && score[q.id].answer === 'answer3' ? color : ''}`}>
+            <label className={`${score && score[q.id].answer === 'answer3' ? color : ''} answers-style`}>
                 <input type='radio' value='answer3' name={q.id} />
                 {q.answer3}
             </label>
-            <label className={`${score && score[q.id].answer === 'answer4' ? color : ''}`}>
+            <label className={`${score && score[q.id].answer === 'answer4' ? color : ''} answers-style`}>
                 <input type='radio' value='answer4' name={q.id} />
                 {q.answer4}
             </label>

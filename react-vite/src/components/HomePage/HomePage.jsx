@@ -8,7 +8,8 @@ import OpenModalButton from '../OpenModalButton/OpenModalButton';
 import SignupFormModal from '../SignupFormModal';
 import LoginFormModal from '../LoginFormModal';
 // import Carousel from './Carousel';
-import HPCards from './HPCards';
+// import HPCards from './HPCards';
+import Mytake from './My-take';
 
 const HomePage = () => {
     const dispatch = useDispatch();
@@ -38,8 +39,7 @@ const HomePage = () => {
                     />
                 </div>
             }
-            {/* <Carousel /> */}
-            <HPCards/>
+            <Mytake />
             <div className='homepage-container'>
                 Flashcards:
                 <div className='mat-containers-home'>
@@ -55,6 +55,7 @@ const HomePage = () => {
                 Tests:
                 <div className='mat-containers-home'>
                     {mats && mats.tests && mats.tests.map((test) => {
+                        if(test.id > 4)return
                         return (
                             <div className='tests-homepage' onClick={() => navigate(`/tests/${test.id}`)} key={`test_${test.id}`}>
                                 <div>{test.name}</div>
